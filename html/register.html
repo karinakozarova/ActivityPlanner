@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title> Login </title>
+    <title> Register </title>
     <!-- Fonts imports -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <!-- Stylesheets imports -->
@@ -12,19 +12,25 @@
 
 <body>
 <div class="form centered">
-    <h1> Login to ActivityPlanner </h1>
+    <h1> Create account </h1>
     <form class="login-form" action="" method="post">
         <label>
             <input type="text" placeholder="Username" id="username"/>
         </label>
         <label>
+            <input type="text" placeholder="Email address" id="email"/>
+        </label>
+        <label>
             <input type="password" placeholder="Password" id="password"/>
         </label>
-        <button class="bold"> login</button>
+        <label>
+            <input type="password" placeholder="Confirm Password" id="confirmPassword"/>
+        </label>
+        <button class="bold"> Register </button>
         <b>
-        <p>Not registered yet?
-           <a href="register.html">Create an account</a>
-        </p>
+            <p>Already have an account
+                <a href="login.html">Login here</a>
+            </p>
         </b>
     </form>
 </div>
