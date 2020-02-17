@@ -5,15 +5,28 @@
     <title> Register </title>
     <!-- Fonts imports -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
     <!-- Stylesheets imports -->
     <link href="../css/base.css" rel="stylesheet">
     <link href="../css/registration.css" rel="stylesheet">
+
+    <!-- Javascript imports -->
+    <script type="application/javascript" src="../js/registration.js"></script>
 </head>
 
 <body>
 <div class="form centered">
     <h1> Create account </h1>
-    <form class="login-form" action="" method="post">
+    <div class="error-message hidden" id="validMailError">
+        Please enter a valid email address
+    </div>
+    <div class="error-message hidden" id="passwordsMatchError">
+        Passwords don't match
+    </div>
+    <div class="error-message hidden" id = "populatedFieldsError">
+        Not all fields are populated
+    </div>
+    <form class="login-form" action="" method="post" onSubmit = "return validateForm(this)">
         <label>
             <input type="text" placeholder="Username" id="username"/>
         </label>
@@ -26,12 +39,12 @@
         <label>
             <input type="password" placeholder="Confirm Password" id="confirmPassword"/>
         </label>
-        <button class="bold"> Register </button>
-        <b>
-            <p>Already have an account
+        <button class="bold" type="submit"> Register</button>
+        <p>
+            <b>Already have an account?
                 <a href="login.html">Login here</a>
-            </p>
-        </b>
+            </b>
+        </p>
     </form>
 </div>
 </body>
