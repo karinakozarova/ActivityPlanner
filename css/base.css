@@ -1,6 +1,6 @@
 /* The styling that's included on all pages*/
 body {
-    background: #76b852;
+    background: #c20e0e;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -13,7 +13,8 @@ body {
 }
 
 .error-message {
-    background-color: #ff4f3f;
+    background-color: #c20e0e;
+    color:white;
     opacity: 0.8;
     padding: 10px;
     margin-bottom: 10px;
