@@ -7,20 +7,26 @@
 
     <!-- Stylesheets imports -->
     <link href="../css/index.css" rel="stylesheet">
+    <link href="../css/index-desktop.css" rel="stylesheet" media="(min-width: 480px)">
+    <link href="../css/index-mobile.css" rel="stylesheet"  media="(max-width: 479px)">
+
+    <!-- Viewport Configuration -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <header class="container">
         <nav>
             <ul>
                 <a href="register.html"><li class="square-button">Sign Up</li></a>
+                <a href="login.html"><li class="square-button">Login</li></a>
                 <li><a href="#">FAQ</a></li>
-                <li><a href="#">About us</a></li>
+                <li><a href="#">About</a></li>
             </ul>
         </nav>
         <div id="quote-wrapper">
         <div class="nonselectable" id="header-quote">
             <p>Make yourself proud <span>plan your</span> ultimate<span> workout</span></p>
-            <a class="rounded-button" id="get-started">Get started now</a>
+            <a class="rounded-button" id="get-started" href="register.html">Get started now</a>
         </div>
 
         </div>
@@ -35,6 +41,7 @@
     </header>
     <div class="container" id="features">
         <h1>Features</h1>
+        <h3>Making your workout plan has never been easier.</h3>
         <div class="features-wrapper">
             <div class="features-panel">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -58,6 +65,20 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ipsum at tortor pellentesque pulvinar dapibus convallis metus. Curabitur scelerisque libero eu turpis sollicitudin ornare.</p>
             </div>
         </div>
+    </div>
+    <div class="container" id="about">
+        <h1>About</h1>
+        <div class="about-wrapper">
+            <div class="about-container">
+                <h2>Plan your workout with MK3Planner.com — for FREE!</h2>
+                <p>Praesent tincidunt augue elit, ornare convallis dolor efficitur nec. Vivamus quis lectus a turpis rutrum tristique. In ante massa, fringilla sit amet dictum elementum, porta at lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent tincidunt consequat tellus sed dictum. Phasellus bibendum mi sit amet quam hendrerit auctor vel ac nisi. Vivamus eu nunc porta, vulputate elit rhoncus, dictum nulla. Mauris finibus ante et tellus luctus, eget porttitor est tincidunt. Donec dolor turpis, consectetur sit amet enim in, cursus fermentum metus. Vivamus ultrices at magna eget suscipit. Morbi et dapibus ipsum. Fusce euismod turpis augue. Ut eget nisi porttitor, imperdiet velit vitae, tristique nisi. Quisque sollicitudin dapibus ultricies.</p>
+            </div>
+            <div class="about-container">
+                <img src="../images/planning-image.png" alt="Planning Image Here" height="225" width="400">
+                <h2>Don't wait! Make going to the gym a better experience - all for FREE!</h2>
+            </div>
+        </div>
+        <center><a class="rounded-button" href="register.html">Join Now</a></center>
     </div>
     <footer>
         <div id="trademark">©2020 Martin Georgiev & Karina Kozarova. All Rights Reserved.</div>

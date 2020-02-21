@@ -1,0 +1,75 @@
+/* Index.html Styling for Mobile Viewport */
+
+header {
+    min-height: 75vh;
+}
+
+.container > h1 {
+    font-size: 10vw;
+}
+
+#quote-wrapper {
+    text-align: center;
+    padding: 1em;
+}
+
+#header-quote {
+    font-size: 1.5em;
+    font-size: 7vw;
+}
+
+#header-quote span {
+    font-size: 1.5em;
+    font-size: 12.5vw;
+}
+
+#get-started {
+    font-size: 0.7em;
+}
+
+#about {
+    font-size: 0.7em;
+}
+
+.features-panel {
+    min-width: 60%;
+    max-width: 75%;
+}
+
+.features-panel > h2 {
+    font-size: 7.5vw;
+}
+
+.features-panel > p {
+    font-size: 4.75vw;
+}
+
+.container > h3 {
+    font-size: 5vw;
+}
+
+.about-wrapper {
+    margin: 0;
+}
+
+.about-container {
+    min-width: 50%;
+    max-width: 75%;
+}
+
+.about-container p {
+    max-width: 100%;
+    font-size: 4.75vw;
+}
+
+.about-container > h2 {
+    font-size: 5vw;
+}
+
+.about-container img {
+    width: 100%;
+}
+
+footer {
+    font-size: 3.5vw;
+}

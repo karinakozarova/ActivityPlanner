@@ -1,3 +1,5 @@
+/* Index.html Base Styling */
+
 :root {
     --main-color: #c20e0e;
     --offset-color: #ffffff;
@@ -17,21 +19,41 @@ header {
     background-image: url("../images/header-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 100vh;
 	overflow: hidden;
 	box-shadow: inset 0 0 10px #000000;
+
+    transition: min-height 1s ease-in-out;
+    -webkit-transition: min-height 1s ease-in-out;
+    -moz-transition: min-height 1s ease-in-out;
+    -o-transition: min-height 1s ease-in-out;
 }
 
 .container {
     width: 100%;
 }
 
-.container h1 {
+.container > h1 {
 	margin: 0;
 	padding: 1em 0 1em 0;
 	text-align: center;
     color: var(--main-color);
     text-transform: uppercase;
+
+    transition: font-size .5s ease-in-out;
+    -webkit-transition: font-size .5s ease-in-out;
+    -moz-transition: font-size .5s ease-in-out;
+    -o-transition: font-size .5s ease-in-out;
+}
+
+.container > h3 {
+	margin: 0;
+	padding: 1em 0 1em 0;
+	text-align: center;
+
+    transition: font-size .5s ease-in-out;
+    -webkit-transition: font-size .5s ease-in-out;
+    -moz-transition: font-size .5s ease-in-out;
+    -o-transition: font-size .5s ease-in-out;
 }
 
 .centered {
@@ -72,9 +94,12 @@ nav li a:hover {
     border: solid 2px var(--main-color);
     color: var(--main-color);
     padding: 0.5em 1em;
+    margin: 0 0.5em;
     transition: .5s;
     text-transform: uppercase;
     font-weight: bold;
+    background-color: var(--background-color);
+    white-space: nowrap
 }
 
 .square-button:hover {
@@ -91,6 +116,8 @@ nav li a:hover {
     border-radius: 30px;
     background-color: var(--main-color);
     transition: .2s;
+    text-decoration: none;
+    white-space: nowrap
 }
 
 .rounded-button:hover {
@@ -102,7 +129,40 @@ nav li a:hover {
 #get-started {
     display: block;
     text-align: center;
-    font-size: 0.75em;
+
+    transition: font-size .5s ease-in-out;
+    -webkit-transition: font-size .5s ease-in-out;
+    -moz-transition: font-size .5s ease-in-out;
+    -o-transition: font-size .5s ease-in-out;
+}
+
+#about {
+    display: block;
+    padding: 2em;
+    box-sizing: border-box;
+}
+
+.about-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 2em;
+}
+
+.about-container {
+    display: inline-block;
+    flex: 1 0 auto;
+    padding: 2em;
+}
+
+.about-container p {
+    text-align: justify;
+    margin: 0;
+}
+
+.about-container img {
+    height: auto;
 }
 
 .nonselectable {
@@ -116,24 +176,32 @@ nav li a:hover {
 
 #quote-wrapper {
     display: block;
-    padding: 40px;
     margin-top: 2em;
 }
 
 #header-quote {
     display: inline-block;
     color: var(--offset-color);
-    font-size: 2em;
     text-transform: uppercase;
     text-align: center;
+
+    transition: font-size .5s ease-in-out;
+    -webkit-transition: font-size .5s ease-in-out;
+    -moz-transition: font-size .5s ease-in-out;
+    -o-transition: font-size .5s ease-in-out;
+
 }
 
 #header-quote span {
     display: block;
-    font-size: 2em;
     color: var(--main-color);
     transition: .2s;
     font-weight: bold;
+
+    transition: font-size .5s ease-in-out;
+    -webkit-transition: font-size .5s ease-in-out;
+    -moz-transition: font-size .5s ease-in-out;
+    -o-transition: font-size .5s ease-in-out;
 }
 
 #header-quote span:hover {
@@ -216,17 +284,26 @@ nav li a:hover {
     text-align: center;
     align-items: center;
     justify-content: center;
+    margin: 2em;
 }
 
 .features-panel {
     display: inline-block;
-    margin: 2em;
-    padding: 1em;
-    width: 300px;
+    flex: 1 0 auto;
+    margin: 1em;
+    padding: 1.25em;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
     -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
 
+    transition: width .5s ease-in-out;
+    -webkit-transition: width .5s ease-in-out;
+    -moz-transition: width .5s ease-in-out;
+    -o-transition: width .5s ease-in-out;
+}
+
+.features-panel h2 {
+    margin: 0;
 }
 
 .features-panel svg {
