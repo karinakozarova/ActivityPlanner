@@ -1,4 +1,12 @@
 /* The styling for the login and registration pages*/
+body {
+    background-image: url('../images/login-background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    padding-top: 10%;
+}
+
 .form {
     position: relative;
     z-index: 1;
@@ -35,4 +43,12 @@ a:link {
 
 a:hover {
     color: #c2244b;
+}
+
+/* Media queries */
+@media (min-width: 1000px) {
+    .column {
+        float: left;
+        width: 40%;
+    }
 }
