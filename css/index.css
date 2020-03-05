@@ -145,6 +145,13 @@ nav li a:hover {
 .about-wrapper {
     display: flex;
     flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    align-items: stretch;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+
     justify-content: center;
     align-items: center;
     margin: 2em;
@@ -281,8 +288,13 @@ nav li a:hover {
 .features-wrapper {
     display: flex;
     flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    align-items: stretch;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
     text-align: center;
-    align-items: center;
     justify-content: center;
     margin: 2em;
 }
