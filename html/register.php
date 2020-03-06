@@ -18,6 +18,7 @@
 </head>
 
 <body>
+    <?php require_once "../configurations/db.php"; ?>
     <div class="column">
         <div class="form centered">
             <h1> Create account </h1>
