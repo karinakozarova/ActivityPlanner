@@ -1,13 +1,12 @@
 <?php
-$servername = "";
-$dbusername = "";
-$dbpassword = "";
-$dbname = "";
+require_once("credentials.php");
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
+	}
+catch(PDOException $e)
+    {
     echo "<br /> connect file " . $e->getMessage();
-}
+    }
 ?>
