@@ -18,9 +18,15 @@
 </head>
 
 <body>
+    <?php require_once "../configurations/db.php"; ?>
     <div class="column">
         <div class="form centered">
             <h1> Create account </h1>
+            <?php if(isset($_SESSION) && $_SESSION['usernameIsNotUnique']) { ?>
+            <div class="error-message" id="validMailError">
+                Please enter a valid email address
+            </div>
+            <?php } ?>
             <div class="error-message hidden" id="validMailError">
                 Please enter a valid email address
             </div>
@@ -30,25 +36,25 @@
             <div class="error-message hidden" id = "populatedFieldsError">
                 Not all fields are populated
             </div>
-            <form class="login-form" action="" method="post" onSubmit = "return validateForm(this)">
+            <form class="login-form" action="profile-dashboard.php" method="post" onsubmit="//return validateForm()">
                 <table>
                     <tr>
                         <td>
-                            <input type="text" placeholder="First name" id="firstname"/>
+                            <input type="text" placeholder="First name" id="firstname" name="firstname"/>
                         </td>
                         <td>
-                            <input type="text" placeholder="Last name" id="lastname" style="margin-left: 3px;"/>
+                            <input type="text" placeholder="Last name" id="lastname" name="lastname" style="margin-left: 3px;"/>
                         </td>
                     </tr>
                 </table>
                 <label>
-                    <input type="text" placeholder="Username" id="username"/>
+                    <input type="text" placeholder="Username" id="username" name="username"/>
                 </label>
                 <label>
-                    <input type="text" placeholder="Email address" id="email"/>
+                    <input type="text" placeholder="Email address" id="email" name="email"/>
                 </label>
                 <label>
-                    <input type="password" placeholder="Password" id="password"/>
+                    <input type="password" placeholder="Password" id="password" name="password"/>
                 </label>
                 <label>
                     <input type="password" placeholder="Confirm Password" id="confirmPassword"/>

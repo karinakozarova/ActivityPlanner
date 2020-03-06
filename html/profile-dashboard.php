@@ -13,14 +13,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<?php
+session_start();
+
+$fname = $_POST["firstname"];
+$lname = $_POST["lastname"];
+$email = $_POST["email"];
+$user = $_POST["username"];
+$psswd = $_POST["password"];
+
+include '../configurations/db.php';
+
+try {
+    // insert login info into db
+    $sql = "INSERT INTO users (username, password)
+        VALUES (\"$user\", \"$psswd\")";
+    $conn->exec($sql);
+
+    // get new user id
+    $user_id_query = $conn->prepare("SELECT id FROM users WHERE username=\"$user\"");
+    $user_id_query->execute();
+    $user_id = $user_id_query->fetchColumn();
+
+    // insert account info into the db
+    $sql = "INSERT INTO accounts (user_id, firstname, lastname, email)
+        VALUES (\"$user_id\", \"$fname\", \"$lname\", \"$email\")";
+    $conn->exec($sql);
+
+    $_SESSION["username"] = $user;
+    $_SESSION["firstname"] = $fname;
+    $_SESSION["lastname"] = $lname;
+} catch (PDOException $e) {
+    if ($e->getCode() == "23000") {
+        // TODO: deal with duplicating usernames
+        $_SESSION['usernameIsNotUnique'] = true;
+        header('Location: register.php');
+        exit;
+    }
+    session_unset();    // remove all session variables
+    session_destroy();    // destroy the session
+}
+$conn = null; // close the PDO
+?>
 <div class="big-container shadow">
     <div class="profile-sidebar">
         <div id="profile-picture">
             <img class="small-shadow center" src="../images/sample-avatar.jpg" alt="Planning Image Here" height="150" width="150">
             <?php
-            $firstName="Jake";
-            $lastName="Phillips";
-            echo "<h3>$firstName $lastName</h3>";
+            echo "<h3>$fname $lname</h3>";
             ?>
             <h4>Enthusiast</h4>
         </div>
@@ -81,8 +121,7 @@
     <div class="profile-content">
         <div id="profile-greeting">
             <?php
-            $firstName="Jake";
-            echo "<p>Good Morning<br><span>$firstName</span><p>";
+            echo "<p>Good Morning<br><span>$fname</span><p>";
             ?>
         </div>
     </div>

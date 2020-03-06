@@ -15,5 +15,6 @@ CREATE TABLE accounts(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
     firstname VARCHAR(50) NOT NULL,
-    lastname VARCHAR(50) NOT NULL
+    lastname VARCHAR(50) NOT NULL,
+    email VARCHAR(250) NOT NULL
 );
