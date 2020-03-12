@@ -6,6 +6,10 @@
     --background-color: #000000;
 }
 
+.hidden{
+    display: none !important;
+}
+
 html, body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;

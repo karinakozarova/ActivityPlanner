@@ -33,7 +33,7 @@
             <div class="error-message hidden" id="passwordsMatchError">
                 Passwords don't match
             </div>
-            <div class="error-message hidden" id = "populatedFieldsError">
+            <div class="error-message hidden" id="populatedFieldsError">
                 Not all fields are populated
             </div>
             <form class="login-form" action="profile-dashboard.php" method="post" onsubmit="//return validateForm()">
@@ -59,10 +59,11 @@
                 <label>
                     <input type="password" placeholder="Confirm Password" id="confirmPassword"/>
                 </label>
-                <button class="bold" type="submit"> Register</button>
+                <input type="hidden" name="is_register" value=1>
+                <button class="bold" type="submit">Register</button>
                 <p>
                     <b>Already have an account?
-                        <a href="login.html">Login here</a>
+                        <a href="login.php">Login here</a>
                     </b>
                 </p>
             </form>

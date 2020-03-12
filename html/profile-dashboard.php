@@ -16,43 +16,72 @@
 <?php
 session_start();
 
-$fname = $_POST["firstname"];
-$lname = $_POST["lastname"];
-$email = $_POST["email"];
-$user = $_POST["username"];
-$psswd = $_POST["password"];
-
 include '../configurations/db.php';
 
-try {
-    // insert login info into db
-    $sql = "INSERT INTO users (username, password)
-        VALUES (\"$user\", \"$psswd\")";
-    $conn->exec($sql);
+if(isset($_POST["is_register"]))
+{
+    $fname = $_POST["firstname"];
+    $lname = $_POST["lastname"];
+    $email = $_POST["email"];
+    $user = $_POST["username"];
+    $psswd = $_POST["password"];
 
-    // get new user id
-    $user_id_query = $conn->prepare("SELECT id FROM users WHERE username=\"$user\"");
-    $user_id_query->execute();
-    $user_id = $user_id_query->fetchColumn();
+    try {
+        // insert login info into db
+        $sql = "INSERT INTO users (username, password)
+            VALUES (\"$user\", \"$psswd\")";
+        $conn->exec($sql);
 
-    // insert account info into the db
-    $sql = "INSERT INTO accounts (user_id, firstname, lastname, email)
-        VALUES (\"$user_id\", \"$fname\", \"$lname\", \"$email\")";
-    $conn->exec($sql);
+        // get new user id
+        $user_id_query = $conn->prepare("SELECT id FROM users WHERE username=\"$user\"");
+        $user_id_query->execute();
+        $user_id = $user_id_query->fetchColumn();
 
-    $_SESSION["username"] = $user;
-    $_SESSION["firstname"] = $fname;
-    $_SESSION["lastname"] = $lname;
-} catch (PDOException $e) {
-    if ($e->getCode() == "23000") {
-        // TODO: deal with duplicating usernames
-        $_SESSION['usernameIsNotUnique'] = true;
-        header('Location: register.php');
-        exit;
+        // insert account info into the db
+        $sql = "INSERT INTO accounts (user_id, firstname, lastname, email)
+            VALUES (\"$user_id\", \"$fname\", \"$lname\", \"$email\")";
+        $conn->exec($sql);
+
+        $_SESSION["username"] = $user;
+        $_SESSION["firstname"] = $fname;
+        $_SESSION["lastname"] = $lname;
+    } catch (PDOException $e) {
+        if ($e->getCode() == "23000") {
+            // TODO: deal with duplicating usernames
+            $_SESSION['usernameIsNotUnique'] = true;
+            header('Location: register.php');
+            exit;
+        }
+        session_unset();    // remove all session variables
+        session_destroy();    // destroy the session
     }
-    session_unset();    // remove all session variables
-    session_destroy();    // destroy the session
 }
+else
+{
+    try {
+        $user = $_SESSION['username'];
+        $user_id_query = $conn->prepare("SELECT id FROM users WHERE username=\"$user\"");
+        $user_id_query->execute();
+        $user_id = $user_id_query->fetchColumn();
+
+        $info_query = $conn->prepare("SELECT firstname, lastname, email FROM accounts WHERE user_id=\"$user_id\"");
+        $info_query->execute();
+        $row  = $info_query -> fetch();
+
+        $_SESSION["firstname"] = $row["firstname"];
+        $_SESSION["lastname"] = $row["lastname"];
+        $_SESSION["email"] = $row["email"];
+    } catch (PDOException $e) {
+        header('Location: index.html');
+
+        session_unset();    // remove all session variables
+        session_destroy();    // destroy the session
+    }
+}
+
+$fname = $_SESSION["firstname"];
+$lname = $_SESSION["lastname"];
+
 $conn = null; // close the PDO
 ?>
 <div class="big-container shadow">

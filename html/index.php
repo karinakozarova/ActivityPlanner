@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+$logged_in = false;
+if(isset($_SESSION) && isset($_SESSION['username']))
+{
+    $logged_in = true;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +26,9 @@
     <header class="container">
         <nav>
             <ul>
-                <a href="register.php"><li class="square-button">Sign Up</li></a>
-                <a href="login.html"><li class="square-button">Login</li></a>
+                <a href="register.php"><li class="square-button <?php if($logged_in == true) { echo "hidden";}?>">Sign Up</li></a>
+                <a href="login.php"><li class="square-button <?php if($logged_in == true) { echo "hidden";}?>">Login</li></a>
+                <a href="profile-dashboard.php"><li class="square-button <?php if($logged_in == false) { echo "hidden";}?>">My dashboard</li></a>
                 <li><a href="#">FAQ</a></li>
                 <li><a href="#">About</a></li>
             </ul>
@@ -26,7 +36,7 @@
         <div id="quote-wrapper">
         <div class="nonselectable" id="header-quote">
             <p>Make yourself proud <span>plan your</span> ultimate<span> workout</span></p>
-            <a class="rounded-button" id="get-started" href="register.php">Get started now</a>
+            <a class="rounded-button <?php if($logged_in == true) { echo "hidden";}?>" id="get-started" href="register.php">Get started now</a>
         </div>
 
         </div>
