@@ -26,9 +26,9 @@ if(isset($_SESSION) && isset($_SESSION['username']))
     <header class="container">
         <nav>
             <ul>
-                <a href="register.php"><li class="square-button <?php if($logged_in == true) { echo "hidden";}?>">Sign Up</li></a>
-                <a href="login.php"><li class="square-button <?php if($logged_in == true) { echo "hidden";}?>">Login</li></a>
-                <a href="profile-dashboard.php"><li class="square-button <?php if($logged_in == false) { echo "hidden";}?>">My dashboard</li></a>
+                <a href="./html/register.php"><li class="square-button <?php if($logged_in == true) { echo "hidden";}?>">Sign Up</li></a>
+                <a href="./html/login.php"><li class="square-button <?php if($logged_in == true) { echo "hidden";}?>">Login</li></a>
+                <a href="./html/profile-dashboard.php"><li class="square-button <?php if($logged_in == false) { echo "hidden";}?>">My dashboard</li></a>
                 <li><a href="#">FAQ</a></li>
                 <li><a href="#">About</a></li>
             </ul>
@@ -36,7 +36,7 @@ if(isset($_SESSION) && isset($_SESSION['username']))
         <div id="quote-wrapper">
         <div class="nonselectable" id="header-quote">
             <p>Make yourself proud <span>plan your</span> ultimate<span> workout</span></p>
-            <a class="rounded-button <?php if($logged_in == true) { echo "hidden";}?>" id="get-started" href="register.php">Get started now</a>
+            <a class="rounded-button <?php if($logged_in == true) { echo "hidden";}?>" id="get-started" href="./html/register.php">Get started now</a>
         </div>
 
         </div>
@@ -88,7 +88,7 @@ if(isset($_SESSION) && isset($_SESSION['username']))
                 <h2>Don't wait! Make going to the gym a better experience - all for FREE!</h2>
             </div>
         </div>
-        <center><a class="rounded-button" href="register.php">Join Now</a></center>
+        <center><a class="rounded-button" href="./html/register.php">Join Now</a></center>
     </div>
     <footer>
         <div id="trademark">©2020 Martin Georgiev & Karina Kozarova. All Rights Reserved.</div>

@@ -36,7 +36,7 @@
             <div class="error-message hidden" id="populatedFieldsError">
                 Not all fields are populated
             </div>
-            <form class="login-form" action="profile-dashboard.php" method="post" onsubmit="//return validateForm()">
+            <form class="login-form" action="profile-dashboard.php" method="post" onsubmit="return validateForm()">
                 <table>
                     <tr>
                         <td>

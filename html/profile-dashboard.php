@@ -72,7 +72,7 @@ else
         $_SESSION["lastname"] = $row["lastname"];
         $_SESSION["email"] = $row["email"];
     } catch (PDOException $e) {
-        header('Location: index.php');
+        header('Location: ../index.php');
 
         session_unset();    // remove all session variables
         session_destroy();    // destroy the session
