@@ -12,14 +12,30 @@
 
     <!-- Javascript imports -->
     <script type="application/javascript" src="../js/registration.js"></script>
+<style>
+     .radio-inline {
+        position: relative;
+        display: inline-block;
+        padding-left: 40px;
+        vertical-align: baseline;
+        cursor: pointer;
+    }
 
+    body{
+        padding: 0px;
+    }
+
+    .form{
+        margin: 0;
+    }
+</style>
     <!-- Viewport Configuration -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
     <?php require_once "../configurations/db.php"; ?>
-    <div class="column">
+    <div class="column" id="registration">
         <div class="form centered">
             <h1> Create account </h1>
             <?php if(isset($_SESSION) && $_SESSION['usernameIsNotUnique']) { ?>
@@ -37,6 +53,7 @@
                 Not all fields are populated
             </div>
             <form class="login-form" action="profile-dashboard.php" method="post" onsubmit="return validateForm()">
+
                 <table>
                     <tr>
                         <td>
@@ -58,6 +75,12 @@
                 </label>
                 <label>
                     <input type="password" placeholder="Confirm Password" id="confirmPassword"/>
+                </label>
+                <label class="radio-inline">
+                    Coach: <input type="radio" name="coach" value="1">
+                </label>
+                <label class="radio-inline">
+                    Athlete: <input type="radio" name="coach" value="2" >
                 </label>
                 <input type="hidden" name="is_register" value=1>
                 <button class="bold" type="submit">Register</button>

@@ -38,7 +38,7 @@ function validateForm() {
 
     let email = document.getElementById('email');
     // check email is valid
-    if(!validateEmail(email)){
+    if(!validateEmail(email.value)){
         vizualiseError('validMailError');
         return false;
     } else{

@@ -1,11 +1,6 @@
 <?php
 session_start();
-
-$logged_in = false;
-if(isset($_SESSION) && isset($_SESSION['username']))
-{
-    $logged_in = true;
-}
+$logged_in = isset($_SESSION) && isset($_SESSION['username']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,9 +10,9 @@ if(isset($_SESSION) && isset($_SESSION['username']))
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
     <!-- Stylesheets imports -->
-    <link href="../css/index.css" rel="stylesheet">
-    <link href="../css/index-desktop.css" rel="stylesheet" media="(min-width: 480px)">
-    <link href="../css/index-mobile.css" rel="stylesheet"  media="(max-width: 479px)">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/index-desktop.css" rel="stylesheet" media="(min-width: 480px)">
+    <link href="css/index-mobile.css" rel="stylesheet"  media="(max-width: 479px)">
 
     <!-- Viewport Configuration -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,15 +79,14 @@ if(isset($_SESSION) && isset($_SESSION['username']))
                 <p>Praesent tincidunt augue elit, ornare convallis dolor efficitur nec. Vivamus quis lectus a turpis rutrum tristique. In ante massa, fringilla sit amet dictum elementum, porta at lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent tincidunt consequat tellus sed dictum. Phasellus bibendum mi sit amet quam hendrerit auctor vel ac nisi. Vivamus eu nunc porta, vulputate elit rhoncus, dictum nulla. Mauris finibus ante et tellus luctus, eget porttitor est tincidunt. Donec dolor turpis, consectetur sit amet enim in, cursus fermentum metus. Vivamus ultrices at magna eget suscipit. Morbi et dapibus ipsum. Fusce euismod turpis augue. Ut eget nisi porttitor, imperdiet velit vitae, tristique nisi. Quisque sollicitudin dapibus ultricies.</p>
             </div>
             <div class="about-container">
-                <img src="../images/planning-image.png" alt="Planning Image Here" height="225" width="400">
+                <img src="images/planning-image.png" alt="Planning Image Here" height="225" width="400">
                 <h2>Don't wait! Make going to the gym a better experience - all for FREE!</h2>
             </div>
         </div>
-        <center><a class="rounded-button" href="./html/register.php">Join Now</a></center>
+        <div style="text-align: center;"><a class="rounded-button" href="./html/register.php">Join Now</a></div>
     </div>
     <footer>
-        <div id="trademark">©2020 Martin Georgiev & Karina Kozarova. All Rights Reserved.</div>
+        <div id="trademark">&copy; 2020 Martin Georgiev & Karina Kozarova. All Rights Reserved.</div>
     </footer>
-<script>/* Fixing Chrome Transition Bug */</script>
 </body>
 </html>

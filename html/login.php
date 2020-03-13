@@ -25,40 +25,37 @@ session_start();
         <h1> Login to ActivityPlanner </h1>
 
         <?php
-            $invalidLogin = false;
-            $missingCredentials = false;
+        $invalidLogin = false;
+        $missingCredentials = false;
 
-            if (isset($_POST["submitted"]))
-            {
-                if(empty($_POST['username']) || empty($_POST['password']))
-                {
-                    $missingCredentials = true;
-                }
-                else
-                {
-                    $username = $_POST['username'];
-                    $password = $_POST['password'];
+        if (isset($_POST["submitted"])) {
+            if (empty($_POST['username']) || empty($_POST['password'])) {
+                $missingCredentials = true;
+            } else {
+                $username = $_POST['username'];
+                $password = $_POST['password'];
 
-                    $login_query = $conn->prepare("SELECT id FROM users WHERE username=\"$username\" AND password=\"$password\"");
-                    $login_query->execute();
+                $login_query = $conn->prepare("SELECT id FROM users WHERE username=\"$username\" AND password=\"$password\"");
+                $login_query->execute();
 
-                    if ($login_query->rowCount() > 0)
-                    {
-                        $_SESSION["username"] = $_POST['username'];
-                        header('Location: profile-dashboard.php');
-                        exit;
-                    }
-                    else
-                    {
-                        $invalidLogin = true;
-                    }
+                if ($login_query->rowCount() > 0) {
+                    $_SESSION["username"] = $_POST['username'];
+                    header('Location: profile-dashboard.php');
+                    exit;
+                } else {
+                    $invalidLogin = true;
                 }
             }
+        }
         ?>
-        <div class="error-message <?php if($invalidLogin == false) { echo "hidden";}?>" id="invalidLoginError">
+        <div class="error-message <?php if ($invalidLogin == false) {
+            echo "hidden";
+        } ?>" id="invalidLoginError">
             Invalid login credentials. Please check your username or password and try again
         </div>
-        <div class="error-message <?php if($missingCredentials == false) { echo "hidden";}?>" id="populatedFieldsError">
+        <div class="error-message <?php if ($missingCredentials == false) {
+            echo "hidden";
+        } ?>" id="populatedFieldsError">
             Not all fields are populated
         </div>
         <form class="login-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
