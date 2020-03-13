@@ -72,7 +72,7 @@ else
         $_SESSION["lastname"] = $row["lastname"];
         $_SESSION["email"] = $row["email"];
     } catch (PDOException $e) {
-        header('Location: index.html');
+        header('Location: index.php');
 
         session_unset();    // remove all session variables
         session_destroy();    // destroy the session
@@ -135,7 +135,7 @@ $conn = null; // close the PDO
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="signout.php">
                     <div class="nav-item">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
                             <path d="M8 9v-4l8 7-8 7v-4h-8v-6h8zm2-7v2h12v16h-12v2h14v-20h-14z"/>
