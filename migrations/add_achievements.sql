@@ -1,0 +1,7 @@
+CREATE TABLE achievements (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name INT NOT NULL ,
+    user_id INT NOT NULL ,
+    description VARCHAR(300),
+    received_on DATE NOT NULL
+);
