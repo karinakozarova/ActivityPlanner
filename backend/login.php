@@ -40,6 +40,7 @@ if (isset($_POST["is_register"])) {
     }
 } else {
     try {
+        if(!isset($_SESSION['username'])) header('Location: ../index.php');
         $user = $_SESSION['username'];
         $user_id_query = $conn->prepare("SELECT id FROM users WHERE username=\"$user\"");
         $user_id_query->execute();
