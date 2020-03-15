@@ -30,3 +30,8 @@ body {
     padding: 0;
     visibility: hidden;
 }
+
+.title {
+    font-weight: bold;
+    color: #8f8f8f;
+}
