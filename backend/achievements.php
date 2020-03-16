@@ -5,9 +5,14 @@ class Achievement{
     public $description;
     public $receivedOn;
 
-
-    public function addAchievement(){
-        var_dump("in achievements addAchievement");
+    public static function addAchievement($name, $userId, $description, $time){
+        require_once("../configurations/credentials.php");
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $query = $conn->prepare("INSERT INTO achievements(name, user_id, description, received_on) VALUES (\"$name\",\"$userId\",\"$description\",\"$time\")");
+        $query->execute();
+        $conn = null;
+        header('Location: ../html/profile-dashboard.php?addedAchievement');
     }
 
     /**

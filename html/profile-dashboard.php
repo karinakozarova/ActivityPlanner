@@ -108,6 +108,11 @@ $achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['us
         </div>
 
         <div id="content">
+            <?php if(isset($_REQUEST['addedAchievement'])) { ?>
+                <div class="achievement-warning">
+                    <h4> Achievement was added successfully! </h4>
+                </div>
+            <?php } ?>
             <div id="tab-overview" class="tab hidden">
                 Overview
             </div>
@@ -124,9 +129,11 @@ $achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['us
                     </div>
                     <div class="row">
                     <div class="column">
+                        <a href="newAchievement.php">
                             <button>
                                 <img src="../images/trophy.png" style="max-height: 10px;">
                                 New achievement</button>
+                        </a>
                         </div>
                     </div> <br> <br>
                 </h2>
