@@ -14,43 +14,10 @@
     <!-- Stylesheets imports -->
     <link href="../css/profile.css" rel="stylesheet">
     <link href="../css/dashboard.css" rel="stylesheet">
+    <link href="../css/newAchievement.css" rel="stylesheet">
 
     <!-- Javascript imports -->
     <script src="../js/tabControl.js"></script>
-    <style>
-        input {
-            background: #f2f2f2;
-            border: 0;
-            margin: 0 0 15px;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        .wide-input{
-            width: 90%;
-        }
-
-        form{
-            padding-left: 2em;
-        }
-
-        textarea{
-            background: #f2f2f2;
-            border: 0;
-            padding: 5px;
-            box-sizing: border-box;
-        }
-
-        button{
-            width: 45%;
-            margin-left: 5%;
-            padding: 14px;
-        }
-
-        #datePicker{
-            width: 40%;
-        }
-    </style>
 
     <!-- Viewport Configuration -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,7 +52,7 @@ include '../backend/achievements.php';
                     </a>
                 </li>
                 <li>
-                    <a href="signout.php">
+                    <a href="../backend/signout.php">
                         <div class="nav-item">
                             <svg width="30" height="30" viewBox="0 0 24 24">
                                 <path d="M8 9v-4l8 7-8 7v-4h-8v-6h8zm2-7v2h12v16h-12v2h14v-20h-14z"/>
@@ -104,12 +71,13 @@ include '../backend/achievements.php';
             </h2>
         </div>
         <div id="content">
-            <form class="add-achievement-form" action="addAchievement.php" method="post" onsubmit="//return validateForm()">
-                <p>  Name </p>
+            <form class="add-achievement-form" action="../backend/addAchievement.php" method="post"
+                  onsubmit="//return validateForm()">
+                <p> Name </p>
                 <input type="text" class="wide-input" placeholder="Name" id="name" name="name"/>
                 <br>
-                <p>  Description </p>
-                <textarea  class="wide-input" rows="4" cols="50" name="description" id="description"> </textarea>
+                <p> Description </p>
+                <textarea class="wide-input" rows="4" cols="50" name="description" id="description"> </textarea>
                 <br>
 
                 <p> Received on:</p>
@@ -118,7 +86,7 @@ include '../backend/achievements.php';
                        name="meeting-time" value="">
                 <button class="bold" type="submit">Add achievement</button>
 
-                <input type="hidden" name="user_id" value="<?= $_SESSION['userid']?>">
+                <input type="hidden" name="user_id" value="<?= $_SESSION['userid'] ?>">
             </form>
 
         </div>

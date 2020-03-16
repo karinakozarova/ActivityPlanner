@@ -1,0 +1,32 @@
+input {
+    background: #f2f2f2;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.wide-input {
+    width: 90%;
+}
+
+form {
+    padding-left: 2em;
+}
+
+textarea {
+    background: #f2f2f2;
+    border: 0;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 45%;
+    margin-left: 5%;
+    padding: 14px;
+}
+
+#datePicker {
+    width: 40%;
+}

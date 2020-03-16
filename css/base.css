@@ -14,7 +14,7 @@ body {
 
 .error-message {
     background-color: #c20e0e;
-    color:white;
+    color: white;
     opacity: 0.8;
     padding: 10px;
     margin-bottom: 10px;
@@ -24,7 +24,7 @@ body {
     border-radius: 10px;
 }
 
-.hidden{
+.hidden {
     height: 0;
     margin: 0;
     padding: 0;

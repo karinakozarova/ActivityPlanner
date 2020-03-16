@@ -86,7 +86,7 @@ $achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['us
                     </a>
                 </li>
                 <li>
-                    <a href="signout.php">
+                    <a href="../backend/signout.php">
                         <div class="nav-item">
                             <svg width="30" height="30" viewBox="0 0 24 24">
                                 <path d="M8 9v-4l8 7-8 7v-4h-8v-6h8zm2-7v2h12v16h-12v2h14v-20h-14z"/>
@@ -108,7 +108,7 @@ $achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['us
         </div>
 
         <div id="content">
-            <?php if(isset($_REQUEST['addedAchievement'])) { ?>
+            <?php if (isset($_REQUEST['addedAchievement'])) { ?>
                 <div class="achievement-warning">
                     <h4> Achievement was added successfully! </h4>
                 </div>
@@ -123,36 +123,38 @@ $achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['us
                 <h2>
                     <div class="row">
                         <div class="column">
-                            <img src="../images/trophy.png" style="max-height: 30px;">
+                            <img src="../images/trophy.png" class="small-image">
                             Achievements (<?= $achievementsCount ?>)
-                    </div>
+                        </div>
                     </div>
                     <div class="row">
-                    <div class="column">
-                        <a href="newAchievement.php">
-                            <button>
-                                <img src="../images/trophy.png" style="max-height: 10px;">
-                                New achievement</button>
-                        </a>
+                        <div class="column">
+                            <a href="newAchievement.php" class="card">
+                                <button> Add new achievement</button>
+                            </a>
                         </div>
-                    </div> <br> <br>
+                    </div>
+                    <br> <br>
                 </h2>
                 <div class="row">
                     <?php
-                    if($achievementsCount != 0){
-                    $achievements = $achievements->getUserAchievements($conn, $_SESSION['userid']);
-                    foreach ($achievements as $achievement) { ?>
-                        <div class="column">
-                            <div class="card">
-                                <img src="../images/achievement.jpg" alt="achievement" style="width: 100%;height: 100%">
-                                <div class="container">
-                                    <h4><b><?= $achievement->name; ?> received on <?= $achievement->receivedOn ?></b>
-                                    </h4>
-                                    <p><?= $achievement->description; ?></p>
+                    if ($achievementsCount != 0) {
+                        $achievements = $achievements->getUserAchievements($conn, $_SESSION['userid']);
+                        foreach ($achievements as $achievement) { ?>
+                            <div class="column">
+                                <div class="card">
+                                    <img src="../images/achievement.jpg" alt="achievement"
+                                         style="width: 100%;height: 100%">
+                                    <div class="container">
+                                        <h4><b><?= $achievement->name; ?> received
+                                                on <?= $achievement->receivedOn ?></b>
+                                        </h4>
+                                        <p><?= $achievement->description; ?></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php } } else {?>
+                        <?php }
+                    } else { ?>
                         <h3> You don't have any achievements. Please add some. </h3>
                     <?php } ?>
 

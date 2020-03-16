@@ -1,4 +1,8 @@
 <?php
+/*
+ * This is the login page.
+ * Everyone can access it.
+ */
 session_start();
 ?>
 <!DOCTYPE html>
