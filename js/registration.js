@@ -32,16 +32,16 @@ function validateForm() {
     if (password1.value !== password2.value) {
         vizualiseError('passwordsMatchError');
         return false;
-    } else{
+    } else {
         hideError('passwordsMatchError');
     }
 
     let email = document.getElementById('email');
     // check email is valid
-    if(!validateEmail(email.value)){
+    if (!validateEmail(email.value)) {
         vizualiseError('validMailError');
         return false;
-    } else{
+    } else {
         hideError('validMailError');
     }
 

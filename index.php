@@ -83,7 +83,7 @@ $logged_in = isset($_SESSION) && isset($_SESSION['username']);
                 <h2>Don't wait! Make going to the gym a better experience - all for FREE!</h2>
             </div>
         </div>
-        <div style="text-align: center;"><a class="rounded-button" href="./html/register.php">Join Now</a></div>
+        <div class="center-text"><a class="rounded-button" href="./html/register.php">Join Now</a></div>
     </div>
     <footer>
         <div id="trademark">&copy; 2020 Martin Georgiev & Karina Kozarova. All Rights Reserved.</div>

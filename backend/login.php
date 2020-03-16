@@ -24,6 +24,7 @@ if (isset($_POST["is_register"])) {
         $conn->exec($sql);
 
         $_SESSION["username"] = $user;
+        $_SESSION["userid"] = $user_id;
         $_SESSION["firstname"] = $fname;
         $_SESSION["lastname"] = $lname;
         $_SESSION["role"] = strtoupper($role_id == '1' ? "Coach" : "Athlete");
@@ -40,7 +41,7 @@ if (isset($_POST["is_register"])) {
     }
 } else {
     try {
-        if(!isset($_SESSION['username'])) header('Location: ../index.php');
+        if (!isset($_SESSION['username'])) header('Location: ../index.php');
         $user = $_SESSION['username'];
         $user_id_query = $conn->prepare("SELECT id FROM users WHERE username=\"$user\"");
         $user_id_query->execute();
@@ -54,9 +55,11 @@ if (isset($_POST["is_register"])) {
         $info_query->execute();
         $row = $info_query->fetch();
 
+        $_SESSION["username"] = $user;
         $_SESSION["firstname"] = $row["firstname"];
         $_SESSION["lastname"] = $row["lastname"];
         $_SESSION["email"] = $row["email"];
+        $_SESSION["userid"] = $user_id;
 
         $role_id = $row["role_id"];
         $info_query = $conn->prepare("SELECT role FROM roles WHERE id=\"$role_id\"");
@@ -79,4 +82,4 @@ $fname = $_SESSION["firstname"];
 $lname = $_SESSION["lastname"];
 $role = $_SESSION["role"];
 
-$conn = null; // close the PDO
+//$conn = null; // close the PDO
