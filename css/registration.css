@@ -36,6 +36,16 @@ body {
     color: #FFFFFF;
 }
 
+form button:hover {
+    background-color: #9c0909;
+    fill: #ebebeb;
+    color: #ebebeb;
+}
+
+.login-form table {
+    width: 100%;
+}
+
 a:link {
     text-decoration: none;
     color: #6caf3d;

@@ -22,7 +22,7 @@
         .radio-inline {
             position: relative;
             display: inline-block;
-            padding-left: 40px;
+            margin: 0 2em;
             vertical-align: baseline;
             cursor: pointer;
         }
@@ -59,7 +59,6 @@
             Not all fields are populated
         </div>
         <form class="login-form" action="profile-dashboard.php" method="post" onsubmit="return validateForm()">
-
             <table>
                 <tr>
                     <td>
@@ -83,10 +82,10 @@
                 <input type="password" placeholder="Confirm Password" id="confirmPassword"/>
             </label>
             <label class="radio-inline">
-                Coach: <input type="radio" name="coach" value="1">
+                Coach<input type="radio" name="coach" value="1">
             </label>
             <label class="radio-inline">
-                Athlete: <input type="radio" name="coach" value="2">
+                Athlete<input type="radio" name="coach" value="2">
             </label>
             <input type="hidden" name="is_register" value=1>
             <button class="bold" type="submit">Register</button>
