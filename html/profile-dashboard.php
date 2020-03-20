@@ -17,9 +17,7 @@
 
     <!-- Javascript imports -->
     <script src="../js/greetings.js"></script>
-    <script src="../js/tabControl.js">
-
-    </script>
+    <script src="../js/tabControl.js"></script>
     <!-- Viewport Configuration -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -42,6 +40,7 @@ $achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['us
                  width="150">
             <h3> <?= $fname ?> <?= $lname ?></h3>
             <h4> <?= $role ?></h4>
+            <a id="edit-profile-link" href="./edit-profile.php"><div class="simple-button" id="edit-profile-button">Edit Profile</div></a>
         </div>
         <div class="profile-nav">
             <ul>

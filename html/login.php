@@ -70,7 +70,7 @@ session_start();
                 <input type="password" placeholder="Password" id="password" name="password"/>
             </label>
             <input type="hidden" name="submitted" value=1>
-            <button class="bold"> login</button>
+            <button class="bold">login</button>
             <b>
                 <p>Not registered yet?
                     <a href="register.php">Create an account</a>
