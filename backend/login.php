@@ -51,7 +51,7 @@ if (isset($_POST["is_register"])) {
             // the user was not found
             header('Location: ../index.php');
         }
-        $info_query = $conn->prepare("SELECT firstname, lastname, email, role_id FROM accounts WHERE user_id=\"$user_id\"");
+        $info_query = $conn->prepare("SELECT firstname, lastname, email, role_id, avatar_path FROM accounts WHERE user_id=\"$user_id\"");
         $info_query->execute();
         $row = $info_query->fetch();
 
@@ -60,12 +60,18 @@ if (isset($_POST["is_register"])) {
         $_SESSION["lastname"] = $row["lastname"];
         $_SESSION["email"] = $row["email"];
         $_SESSION["userid"] = $user_id;
+        $avatar_path = $row["avatar_path"];
 
         $role_id = $row["role_id"];
         $info_query = $conn->prepare("SELECT role FROM roles WHERE id=\"$role_id\"");
         $info_query->execute();
         $row = $info_query->fetch();
         $_SESSION["role"] = strtoupper($row["role"]);
+
+        $file_path = '../uploads/'.$avatar_path;
+        $profilepic = '';
+        if(isset($avatar_path)) $profilepic = $file_path;
+        else $profilepic = '../uploads/default-avatar.jpg';
 
     } catch (PDOException $e) {
         var_dump("Error: " . $e);

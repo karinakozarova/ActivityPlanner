@@ -26,7 +26,7 @@ $logged_in = isset($_SESSION) && isset($_SESSION['username']);
                 <a href="./html/profile-dashboard.php"><li class="square-button <?php if($logged_in == false) { echo "hidden";}?>">My dashboard</li></a>
                 <a href="./backend/signout.php"><li class="square-button <?php if($logged_in == false) { echo "hidden";}?>">Sign out</li></a>
                 <li><a href="#">FAQ</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="#about">About</a></li>
             </ul>
         </nav>
         <div id="quote-wrapper">

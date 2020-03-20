@@ -4,6 +4,7 @@
 
 #profile-picture {
     display: block;
+    position: relative;
     margin: 1em;
 }
 
@@ -56,12 +57,14 @@
     margin: 1em 0.5em 1em 0.5em;
     padding: 10px;
     color: #FFFFFF;
+    transition: .2s;
 }
 
-.form-edit-account button[type=reset] {
-    background: inherit;
-    border: 2px solid #c20e0e;
-    color: #000000;
+.form-edit-account button:hover
+{
+    background-color: #9c0909;
+    fill: #ebebeb;
+    color: #ebebeb;
 }
 
 .error-message {
@@ -84,4 +87,51 @@
 
 .hidden {
     display: none !important;
+}
+
+.upload-file-button
+{
+    position: absolute;
+    top: 80px;
+    left: 120px;
+    height: 25px;
+    width: 25px;
+    background-color: #c20e0e;
+    fill: #ffffff;
+    padding: 0.5em;
+    border-radius: 50%;
+    transition: .2s;
+}
+
+.upload-file-button:hover {
+    background-color: #9c0909;
+    fill: #ebebeb;
+    color: #ebebeb;
+}
+
+.upload-file-button svg {
+    display: inline-block;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+.avatar-wrapper {
+    display: block;
+    height: max-content;
+    width: max-content;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.avatar-wrapper-wrapper {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#settings-nav li {
+    width: 100%;
+}
+#settings-nav li:hover {
+    font-weight: bold;
 }
