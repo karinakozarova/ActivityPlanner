@@ -34,7 +34,7 @@ include '../backend/achievements.php';
 <div class="big-container shadow">
     <div class="profile-sidebar">
         <div id="profile-picture">
-            <img class="small-shadow center" src="../images/sample-avatar.jpg" alt="Planning Image Here" height="150"
+            <img class="small-shadow center" src="<?=$profilepic?>" alt="Planning Image Here" height="150"
                  width="150">
             <h3> <?= $fname ?> <?= $lname ?></h3>
             <h4> <?= $role ?></h4>

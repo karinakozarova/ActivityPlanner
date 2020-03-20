@@ -6,6 +6,7 @@ if (isset($_POST["is_register"])) {
     $user = $_POST["username"];
     $psswd = $_POST["password"];
     $role_id = $_POST["coach"] == 1 ? '1' : '2';
+    $profilepic = '../uploads/default-avatar.jpg';
 
     try {
         // insert login info into db

@@ -48,7 +48,8 @@ try
     $_SESSION["userid"] = $user_id;
     $_SESSION["avatar"] = $row["avatar_path"];
 
-    $profilepic = "../uploads/".$_SESSION["avatar"];
+    if(isset($_SESSION["avatar"])) $profilepic = "../uploads/".$_SESSION["avatar"];
+    else $profilepic = '../uploads/default-avatar.jpg';
 }
 catch (PDOException $e)
 {
