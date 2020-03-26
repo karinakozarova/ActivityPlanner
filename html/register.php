@@ -55,8 +55,8 @@
         <div class="error-message hidden" id="passwordsMatchError">
             Passwords don't match
         </div>
-        <div class="error-message hidden" id="passwordUsernameError">
-            Your password cannot contain your username 
+        <div class="error-message hidden" id="passwordContainsError">
+            Your password cannot contain your username or first name
         </div>
         <div class="error-message hidden" id="populatedFieldsError">
             Not all fields are populated

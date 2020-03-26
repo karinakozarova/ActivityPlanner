@@ -36,13 +36,15 @@ function validateForm() {
         hideError('passwordsMatchError');
     }
 
+    let firstname = document.getElementById('firstname');
     let username = document.getElementById('username');
-    if (String(password1.value).indexOf(username.value) !== -1)
+    let passwordStr = String(password1.value);
+    if (passwordStr.indexOf(username.value) !== -1 || passwordStr.indexOf(firstname.value) !== -1)
     {
-        vizualiseError('passwordUsernameError');
+        vizualiseError('passwordContainsError');
         return false;
     } else {
-        hideError('passwordUsernameError')
+        hideError('passwordContainsError')
     }
 
     let email = document.getElementById('email');
