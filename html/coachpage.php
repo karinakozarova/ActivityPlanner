@@ -1,7 +1,7 @@
 <?php
 /*
- * This is the main page.
- * If a user cant be logged in, it redirects to the index page.
+ * This is the coach page.
+ * If a user cant be logged in as coach, it redirects to the login page.
  */
 ?>
 <!DOCTYPE html>
@@ -18,6 +18,7 @@
     <!-- Javascript imports -->
     <script src="../js/greetings.js"></script>
     <script src="../js/tabControl.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Viewport Configuration -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -33,7 +34,14 @@ if($_SESSION['role'] != "COACH"){
     exit;
 }
 ?>
-
+<script>
+    $.ajax('https://quotes.rest/qod?language=en',   // request url
+        {
+            success: function (data, status, xhr) {// success callback function
+                $('#quoteoftheday').html(data['contents']['quotes'][0]['quote']);
+            }
+        });
+    </script>
 <div class="big-container shadow">
     <div class="profile-sidebar">
         <div id="profile-picture">
@@ -59,8 +67,12 @@ if($_SESSION['role'] != "COACH"){
         <div id="content">
             <div id="profile-greeting">
                 <p>
-                    Congratulations! You have access to the Coach  <br>
                     In the future you will see information about your athletes here.
+                <br> <br> <hr>
+                <h1> Quote of the day</h1>
+                    <h3>
+                        <div id="quoteoftheday"></div>
+                    </h3>
                 </p>
             </div>
         </div>
