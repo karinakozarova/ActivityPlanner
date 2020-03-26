@@ -36,6 +36,15 @@ function validateForm() {
         hideError('passwordsMatchError');
     }
 
+    let username = document.getElementById('username');
+    if (String(password1.value).indexOf(username.value) !== -1)
+    {
+        vizualiseError('passwordUsernameError');
+        return false;
+    } else {
+        hideError('passwordUsernameError')
+    }
+
     let email = document.getElementById('email');
     // check email is valid
     if (!validateEmail(email.value)) {
