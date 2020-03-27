@@ -52,14 +52,20 @@ session_start();
             }
         }
         ?>
-        <div class="error-message <?php if ($invalidLogin == false) {
-            echo "hidden";
-        } ?>" id="invalidLoginError">
+        <?php
+        if(isset($_GET["password"]))
+        {
+            if($_GET["password"] == "updated")
+            { ?>
+                <div class="success-message"> Successfully changed password.</div>
+            <?php
+            }
+        }
+        ?>
+        <div class="error-message <?php if ($invalidLogin == false) { echo "hidden"; }?>" id="invalidLoginError">
             Invalid login credentials. Please check your username or password and try again
         </div>
-        <div class="error-message <?php if ($missingCredentials == false) {
-            echo "hidden";
-        } ?>" id="populatedFieldsError">
+        <div class="error-message <?php if ($missingCredentials == false) { echo "hidden"; }?>" id="populatedFieldsError">
             Not all fields are populated
         </div>
         <form class="login-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
@@ -71,11 +77,8 @@ session_start();
             </label>
             <input type="hidden" name="submitted" value=1>
             <button class="bold">login</button>
-            <b>
-                <p>Not registered yet?
-                    <a href="register.php">Create an account</a>
-                </p>
-            </b>
+            <b><p>Not registered yet? <a href="register.php">Create an account</a></p></b>
+            <a href="reset-password.php">Forgot your passsword?</a>
         </form>
     </div>
 </div>
