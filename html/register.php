@@ -88,7 +88,7 @@
                 Coach<input type="radio" name="coach" value="1">
             </label>
             <label class="radio-inline">
-                Athlete<input type="radio" name="coach" value="2">
+                Athlete<input type="radio" name="coach" value="2" checked>
             </label>
             <input type="hidden" name="is_register" value=1>
             <button class="bold" type="submit">Register</button>

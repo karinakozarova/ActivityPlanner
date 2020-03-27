@@ -5,13 +5,13 @@ if (isset($_POST["is_register"])) {
     $email = $_POST["email"];
     $user = $_POST["username"];
     $psswd = $_POST["password"];
-    $role_id = $_POST["coach"] == 1 ? '1' : '2';
+    $role_id = $_POST["coach"];
     $profilepic = '../uploads/default-avatar.jpg';
 
     try {
         // insert login info into db
-        $sql = "INSERT INTO users (username, password)
-            VALUES (\"$user\", \"$psswd\")";
+        $sql = "INSERT INTO users (username, password, role_id)
+            VALUES (\"$user\", \"$psswd\", \"$role_id\")";
         $conn->exec($sql);
 
         // get new user id
