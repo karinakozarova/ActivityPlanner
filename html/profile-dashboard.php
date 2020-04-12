@@ -18,6 +18,8 @@
     <!-- Javascript imports -->
     <script src="../js/greetings.js"></script>
     <script src="../js/tabControl.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
     <!-- Viewport Configuration -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -108,9 +110,24 @@ $achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['us
 
         <div id="content">
             <?php if (isset($_REQUEST['addedAchievement'])) { ?>
-                <div class="achievement-warning">
-                    <h4> Achievement was added successfully! </h4>
-                </div>
+                <script>
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Achievement was added successfully!'
+                    })
+                </script>
             <?php } ?>
             <div id="tab-overview" class="tab hidden">
                 Overview
