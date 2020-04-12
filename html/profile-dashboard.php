@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
     <!-- Stylesheets imports -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="../css/profile.css" rel="stylesheet">
     <link href="../css/dashboard.css" rel="stylesheet">
 
@@ -136,45 +137,7 @@ $achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['us
                 Planner
             </div>
             <div id="tab-achievements" class="tab hidden">
-                <h2>
-                    <div class="row">
-                        <div class="column">
-                            <img src="../images/trophy.png" class="small-image">
-                            Achievements (<?= $achievementsCount ?>)
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="column">
-                            <a href="newAchievement.php" class="card">
-                                <button> Add new achievement</button>
-                            </a>
-                        </div>
-                    </div>
-                    <br> <br>
-                </h2>
-                <div class="row">
-                    <?php
-                    if ($achievementsCount != 0) {
-                        $achievements = $achievements->getUserAchievements($conn, $_SESSION['userid']);
-                        foreach ($achievements as $achievement) { ?>
-                            <div class="column">
-                                <div class="card">
-                                    <img src="../images/achievement.jpg" alt="achievement"
-                                         style="width: 100%;height: 100%">
-                                    <div class="container">
-                                        <h4><b><?= $achievement->name; ?> received
-                                                on <?= $achievement->receivedOn ?></b>
-                                        </h4>
-                                        <p><?= $achievement->description; ?></p>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php }
-                    } else { ?>
-                        <h3> You don't have any achievements. Please add some. </h3>
-                    <?php } ?>
-
-                </div>
+                <?php include("tab-achivements.inc.php")?>
             </div>
             <div id="tab-goals" class="tab hidden">
                 Goals
