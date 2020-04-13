@@ -25,6 +25,18 @@ body {
     -webkit-box-shadow: 0 0 5px #000000;
 }
 
+.gray-shadow {
+    box-shadow: 0 0 15px #c4c4c4;
+    -moz-box-shadow: 0 0 15px #c4c4c4;
+    -webkit-box-shadow: 0 0 15px #c4c4c4;
+}
+
+.small-gray-shadow {
+    box-shadow: 0 0 5px #c4c4c4;
+    -moz-box-shadow: 0 0 5px #c4c4c4;
+    -webkit-box-shadow: 0 0 5px #c4c4c4;
+}
+
 .profile-sidebar {
     display: inline-block;
     padding: 2em;
