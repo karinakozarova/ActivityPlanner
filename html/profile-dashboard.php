@@ -111,7 +111,8 @@ $achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['us
         </div>
 
         <div id="content">
-            <?php if (isset($_REQUEST['addedAchievement'])) { ?>
+            <?php
+            if (isset($_REQUEST['addedAchievement'])) { ?>
                 <script>
                     const Toast = Swal.mixin({
                         toast: true,
@@ -128,6 +129,26 @@ $achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['us
                     Toast.fire({
                         icon: 'success',
                         title: 'Achievement was added successfully!'
+                    })
+                </script>
+            <?php }
+            if (isset($_REQUEST['editedAchievement'])) { ?>
+                <script>
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Achievement was edited successfully!'
                     })
                 </script>
             <?php } ?>

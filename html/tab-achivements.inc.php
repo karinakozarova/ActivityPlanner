@@ -34,7 +34,7 @@ $achievements = $achievements->getUserAchievements($conn, $_SESSION['userid']);
                                 on <?= $achievement->receivedOn ?></b>
                         </h4>
                         <p><?= $achievement->description; ?></p>
-                        <button class="btn-light" style="margin-left: 55%;">
+                        <button class="btn-light" style="margin-left: 55%;" value="<?= $achievement->id?>"  onclick="editAchievement($(this).val());">
                             <i class="fa fa-edit"></i>
                         </button>
                         <button class="btn-light" value="<?= $achievement->id?>" onclick="deleteAchievement($(this).val());">
@@ -76,5 +76,9 @@ $achievements = $achievements->getUserAchievements($conn, $_SESSION['userid']);
                 window.location.href = '../backend/deleteAchievement.php?id=' + id;
             }
         })
+    }
+
+    function editAchievement(id) {
+        window.location.href = '../html/editAchievement.php?id=' + id;
     }
 </script>
