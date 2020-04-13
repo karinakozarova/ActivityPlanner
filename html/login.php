@@ -39,7 +39,9 @@ session_start();
                 $username = $_POST['username'];
                 $password = $_POST['password'];
 
-                $login_query = $conn->prepare("SELECT id FROM users WHERE username=\"$username\" AND password=\"$password\"");
+                $login_query = $conn->prepare("SELECT id FROM users WHERE username=:username AND password=:password");
+                $login_query->bindValue(":username", $username);
+                $login_query->bindValue(":password", $password);
                 $login_query->execute();
 
                 if ($login_query->rowCount() > 0) {

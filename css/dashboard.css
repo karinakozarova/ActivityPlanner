@@ -65,3 +65,124 @@
     color: black;
     width: 20%;
 }
+
+/* Overview Tab */
+#tab-overview {
+    margin: 0 2em 2em 0;
+}
+
+#overview-weekly-goals {
+    margin: 0;
+    text-transform: capitalize;
+}
+
+#overview-weekly-goals > span {
+    display: inline-block;
+    text-transform: uppercase;
+    color: #c20e0e;
+    font-weight: bold;
+}
+
+.progressbar-container {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    align-items: stretch;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    text-align: center;
+    justify-content: center;
+    margin: 1em;
+}
+
+.unselectable {
+    user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+.progressbar-wrapper {
+    display: inline-block;
+    flex: 1 0 auto;
+
+    transition: width .5s ease-in-out;
+    -webkit-transition: width .5s ease-in-out;
+    -moz-transition: width .5s ease-in-out;
+    -o-transition: width .5s ease-in-out;
+}
+
+.progressbar-container, #calories-progressbar, #exercises-progressbar, #steps-progressbar, #distance-progressbar {
+    position: relative;
+}
+
+.progressbar-wrapper > svg {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    margin-top: -95px;
+    margin-left: -30px;
+    fill: #c20e0e;
+}
+
+#calories-progressbar-icon {
+    fill: #ff5733;
+}
+
+#exercises-progressbar-icon {
+    fill: #0779e4;
+}
+
+#steps-progressbar-icon {
+    fill: #5b8c5a;
+}
+
+#distance-progressbar-icon {
+    fill: #552244;
+}
+
+.progressbar-wrapper > h4 {
+    display: block;
+    text-align: center;
+    margin: 1em 0 0 0;
+    color: #c20e0e;
+}
+
+.progressbar-wrapper > h4 > span {
+    font-weight: bold;
+}
+
+.progressbar-wrapper > p {
+    display: block;
+    text-align: center;
+    margin: 0;
+}
+
+#activityChart {
+    padding: 2em;
+    margin: auto 0 auto 0;
+}
+
+#activityChartTitle {
+    display: inline-block;
+    text-transform: capitalize;
+}
+
+#activityChartTitle span {
+    display: inline-block;
+    text-transform: uppercase;
+    color: #c20e0e;
+    font-weight: bold;
+}
+
+#activity-chart-container {
+    box-sizing: border-box;
+    position: relative;
+    height:250px;
+    width:90%;
+}
+.chart-wrapper {
+    display: block;
+}
