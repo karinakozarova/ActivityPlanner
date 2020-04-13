@@ -5,7 +5,7 @@ class Achievement
     public $name;
     public $description;
     public $receivedOn;
-
+    public $id;
     /**
      * @param $name
      * @param $userId
@@ -32,7 +32,7 @@ class Achievement
     {
         $achievements = [];
 
-        $query = $conn->prepare("SELECT name, user_id, description, received_on FROM achievements WHERE user_id=\"$userId\"");
+        $query = $conn->prepare("SELECT name, user_id, description, received_on, id FROM achievements WHERE user_id=\"$userId\"");
         $query->execute();
         $elements = $query->fetchAll();
 
@@ -42,7 +42,7 @@ class Achievement
             $achievement->description = $element["description"];
             $achievement->name = $element["name"];
             $achievement->receivedOn = $element["received_on"];
-
+            $achievement->id = $element['id'];
             array_push($achievements, $achievement);
         }
 
