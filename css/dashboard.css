@@ -59,3 +59,9 @@
 .small-image {
     max-height: 1rem;
 }
+
+.btn-light{
+    background-color: #f8f9fa;
+    color: black;
+    width: 20%;
+}
