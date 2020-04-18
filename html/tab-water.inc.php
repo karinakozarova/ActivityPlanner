@@ -63,25 +63,14 @@ for($i = (int) $daynum; $i >= 0; $i--){
     var inputData = [];
     var dates = [];
     dates = <?= json_encode($dates)?>;
-    console.log(dates);
 
     dates.forEach(function (item, index) {
-        // console.log(item);
-        //$.ajax('../backend/getWaterIntake.php?date=' . item,
-        //{
-        //    success: function (data) {
-        //        //console.log(<?////= $waterCups?>////);
-        //        console.log(data);
-        //    }
-        //});
         $.ajax({
             type: 'get',
             url: '../backend/getWaterIntake.php?date=' + item,
             date: item,
             success: function(res) {
-                console.log(res);
                 inputData[index] = res;
-                // alert(data);
             }
         });
     });
