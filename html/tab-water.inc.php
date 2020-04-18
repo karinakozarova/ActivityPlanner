@@ -50,19 +50,46 @@ $date = date('Y-m-d');
 $dayOfWeek = date("l", strtotime($date));
 //Print out the day that our date fell on
 $daynum = date("w", strtotime($dayOfWeek));
-var_dump($daynum);
+if($dayOfWeek = "Sunday") $daynum = 6;
+$dates = [];
+
+for($i = (int) $daynum; $i >= 0; $i--){
+    $ago = '-' . $i . ' days';
+    $thisDate = date("Y-m-d", strtotime($ago, strtotime($date)));
+    $dates[] = $thisDate;
+}
 ?>
 <script>
-    $.ajax('../backend/getWaterIntake.php',
-    {
-        success: function (data) {
-            console.log(data);
-        }
+    var inputData = [];
+    var dates = [];
+    dates = <?= json_encode($dates)?>;
+    console.log(dates);
+
+    dates.forEach(function (item, index) {
+        // console.log(item);
+        //$.ajax('../backend/getWaterIntake.php?date=' . item,
+        //{
+        //    success: function (data) {
+        //        //console.log(<?////= $waterCups?>////);
+        //        console.log(data);
+        //    }
+        //});
+        $.ajax({
+            type: 'get',
+            url: '../backend/getWaterIntake.php?date=' + item,
+            date: item,
+            success: function(res) {
+                console.log(res);
+                inputData[index] = res;
+                // alert(data);
+            }
+        });
     });
+
 
     $(function () {
         var ctx = $("#line-chartcanvas");
-        var inputData = [1, 5, 12, 4, 2, 0, 0];
+        //inputData = <?php //echo json_encode([0,0,0,0,0,0,0]) ?>//;
         //line chart data
         var data = {
             labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
