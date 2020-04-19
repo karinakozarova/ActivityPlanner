@@ -91,6 +91,14 @@ $achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['us
                     </a>
                 </li>
                 <li>
+                    <a onclick='showWaterIntake()'>
+                        <div class="nav-item" id="nav-water">
+                            <svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 0c-4.87 7.197-8 11.699-8 16.075 0 4.378 3.579 7.925 8 7.925s8-3.547 8-7.925c0-4.376-3.13-8.878-8-16.075zm-.027 5.12c.467.725 1.027 1.987 1.027 3.32 0 3.908-4 4.548-4 2.17 0-1.633 1.988-4.044 2.973-5.49z"/></svg>
+                            <p>Water Intake</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
                     <a href="../backend/signout.php">
                         <div class="nav-item">
                             <svg width="30" height="30" viewBox="0 0 24 24">
@@ -130,6 +138,25 @@ $achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['us
                     Toast.fire({
                         icon: 'success',
                         title: 'Achievement was added successfully!'
+                    })
+                </script>
+            <?php } else if (isset($_REQUEST['addedWater'])) { ?>
+                <script>
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Water intake for today was added successfully!'
                     })
                 </script>
             <?php } ?>
@@ -189,6 +216,9 @@ $achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['us
             </div>
             <div id="tab-achievements" class="tab hidden">
                 <?php include("tab-achivements.inc.php")?>
+            </div>
+            <div id="tab-water" class="tab hidden">
+                <?php include("tab-water.inc.php")?>
             </div>
             <div id="tab-goals" class="tab hidden">
                 Goals
