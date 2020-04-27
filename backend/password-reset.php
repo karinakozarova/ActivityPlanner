@@ -53,8 +53,10 @@ if(isset($_POST["reset-password-submit"]))
                 exit();
             }
 
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
             $update_query = $conn->prepare("UPDATE users SET password=:newpass WHERE id=:userid");
-            $update_query->bindValue(":newpass", $password);
+            $update_query->bindValue(":newpass", $hashed_password);
             $update_query->bindValue(":userid", $user_id);
             $update_query->execute();
 

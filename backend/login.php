@@ -10,8 +10,11 @@ if (isset($_POST["is_register"])) {
 
     try {
         // insert login info into db
+
+        $hashed_password = password_hash($psswd, PASSWORD_DEFAULT);
+
         $sql = "INSERT INTO users (username, password, role_id)
-            VALUES (\"$user\", \"$psswd\", \"$role_id\")";
+            VALUES (\"$user\", \"$hashed_password\", \"$role_id\")";
         $conn->exec($sql);
 
         // get new user id

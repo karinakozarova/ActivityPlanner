@@ -23,14 +23,16 @@ $(document).ready(function() {
                 data: [1, 15, 18, 8, 4, 6, 19].slice(-7),
                 backgroundColor: "transparent",
                 borderColor: 'rgba(91, 140, 90)',
-                borderWidth: 3
+                borderWidth: 3,
+                hidden: true
             },
             {
                 label: 'Distance',
                 data: [5,3,6,7,8,3,20,10, 5].slice(-7),
                 backgroundColor: "transparent",
                 borderColor: 'rgba(85, 34, 68)',
-                borderWidth: 3
+                borderWidth: 3,
+                hidden: true
             }
         ]
         },

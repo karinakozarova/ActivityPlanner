@@ -22,7 +22,7 @@ session_start();
 </head>
 
 <body>
-<?php require_once "../configurations/db.php"; ?>
+<?php require_once("../configurations/db.php");?>
 
 <div class="column">
     <div class="form centered">
@@ -39,12 +39,12 @@ session_start();
                 $username = $_POST['username'];
                 $password = $_POST['password'];
 
-                $login_query = $conn->prepare("SELECT id FROM users WHERE username=:username AND password=:password");
+                $login_query = $conn->prepare("SELECT password FROM users WHERE username=:username");
                 $login_query->bindValue(":username", $username);
-                $login_query->bindValue(":password", $password);
                 $login_query->execute();
+                $row = $login_query->fetch();
 
-                if ($login_query->rowCount() > 0) {
+                if (password_verify($password, $row["password"])) {
                     $_SESSION["username"] = $_POST['username'];
                     header('Location: profile-dashboard.php');
                     exit;
