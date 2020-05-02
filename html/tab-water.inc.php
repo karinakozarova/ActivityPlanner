@@ -1,36 +1,4 @@
-<style>
-    form label {
-        color: darkgray;
-        cursor: pointer;
-    }
-
-    form input {
-        margin: 15px 0;
-        padding: 15px 10px;
-        width: 30%;
-        outline: none;
-        border: 1px solid #bbb;
-        border-radius: 20px;
-    }
-
-    input[type=submit] {
-        padding: 15px 50px;
-        width: auto;
-        background: #1abc9c;
-        border: none;
-        color: white;
-        cursor: pointer;
-        clear: right;
-    }
-
-    input[type=submit]:hover {
-        opacity: 0.8;
-    }
-
-    input[type="submit"]:active {
-        opacity: 0.4;
-    }
-</style>
+<link rel="stylesheet" href="../css/waterTab.css">
 <?php
 include('../backend/getDailyWaterIntake.php');
 ?>
@@ -42,9 +10,10 @@ include('../backend/getDailyWaterIntake.php');
     <input type="submit">
 </form>
 <h4> Water statistics</h4>
-<div class="chart-wrapper chart-container" id="activity-chart-container" style="position: relative; height:40vh; width:60vw">
+<div class="chart-wrapper chart-container" id="activity-chart-container"
+     style="position: relative; height:40vh; width:60vw">
     <canvas id="line-chartcanvas" width="200px" height="80px"></canvas>
-    </div>
+</div>
 
 </div>
 <?php
@@ -52,17 +21,17 @@ $date = date('Y-m-d');
 $dayOfWeek = date("l", strtotime($date));
 //Print out the day that our date fell on
 $daynum = date("w", strtotime($dayOfWeek));
-if($dayOfWeek = "Sunday") $daynum = 6;
+if ($dayOfWeek = "Sunday") $daynum = 6;
 $dates = [];
 
-for($i = (int) $daynum; $i >= 0; $i--){
+for ($i = (int)$daynum; $i >= 0; $i--) {
     $ago = '-' . $i . ' days';
     $thisDate = date("Y-m-d", strtotime($ago, strtotime($date)));
     $dates[] = $thisDate;
 }
 ?>
 <script>
-    var inputData = [0,0,0,0,0,0,0];
+    var inputData = [0, 0, 0, 0, 0, 0, 0];
     var dates = [];
     dates = <?= json_encode($dates)?>;
 
@@ -71,7 +40,7 @@ for($i = (int) $daynum; $i >= 0; $i--){
             type: 'get',
             url: '../backend/getWaterIntake.php?date=' + item,
             date: item,
-            success: function(res) {
+            success: function (res) {
                 inputData[index - 1] = res;
             }
         });
@@ -81,7 +50,7 @@ for($i = (int) $daynum; $i >= 0; $i--){
     $(function () {
         var ctx = $("#line-chartcanvas");
         var dailyGoal = <?= $waterCupsGoals ?>;
-        var goals = [dailyGoal,dailyGoal,dailyGoal,dailyGoal,dailyGoal,dailyGoal,dailyGoal]
+        var goals = [dailyGoal, dailyGoal, dailyGoal, dailyGoal, dailyGoal, dailyGoal, dailyGoal]
         var data = {
             labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
             datasets: [

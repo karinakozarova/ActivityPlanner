@@ -9,32 +9,18 @@
 
 <head>
     <title> Register </title>
+
     <!-- Fonts imports -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
     <!-- Stylesheets imports -->
     <link href="../css/base.css" rel="stylesheet">
     <link href="../css/registration.css" rel="stylesheet">
+    <link href="../css/extraRegistration.css" rel="stylesheet">
 
     <!-- Javascript imports -->
     <script type="application/javascript" src="../js/registration.js"></script>
-    <style>
-        .radio-inline {
-            position: relative;
-            display: inline-block;
-            margin: 0 2em;
-            vertical-align: baseline;
-            cursor: pointer;
-        }
 
-        body {
-            padding: 0px;
-        }
-
-        .form {
-            margin: 0;
-        }
-    </style>
     <!-- Viewport Configuration -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>

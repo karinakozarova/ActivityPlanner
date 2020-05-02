@@ -8,7 +8,8 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title> Login </title>
+    <title> Reset your password </title>
+
     <!-- Fonts imports -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
@@ -31,11 +32,12 @@ session_start();
             <button class="bold" name="reset-password-submit">Send e-mail</button>
         </form>
         <?php
-            if(isset($_GET["reset"]))
-            {
-                if($_GET["reset"] == "success") {echo "<p>Check your e-mail!</p>";}
+        if (isset($_GET["reset"])) {
+            if ($_GET["reset"] == "success") {
+                echo "<p>Check your e-mail!</p>";
             }
-         ?>
+        }
+        ?>
     </div>
 </div>
 </body>

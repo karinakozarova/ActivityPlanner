@@ -1,0 +1,31 @@
+form label {
+    color: darkgray;
+    cursor: pointer;
+}
+
+form input {
+    margin: 15px 0;
+    padding: 15px 10px;
+    width: 30%;
+    outline: none;
+    border: 1px solid #bbb;
+    border-radius: 20px;
+}
+
+input[type=submit] {
+    padding: 15px 50px;
+    width: auto;
+    background: #1abc9c;
+    border: none;
+    color: white;
+    cursor: pointer;
+    clear: right;
+}
+
+input[type=submit]:hover {
+    opacity: 0.8;
+}
+
+input[type="submit"]:active {
+    opacity: 0.4;
+}

@@ -37,7 +37,8 @@ $achievements = $achievements->getUserAchievements($conn, $_SESSION['userid']);
                         <button class="btn-light" style="margin-left: 55%;">
                             <i class="fa fa-edit"></i>
                         </button>
-                        <button class="btn-light" value="<?= $achievement->id?>" onclick="deleteAchievement($(this).val());">
+                        <button class="btn-light" value="<?= $achievement->id ?>"
+                                onclick="deleteAchievement($(this).val());">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </button>
                         </a>
