@@ -124,62 +124,11 @@ $achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['us
         ?>
         <div id="content">
             <?php if (isset($_REQUEST['addedAchievement'])) { ?>
-                <script>
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        onOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Achievement was added successfully!'
-                    })
-                </script>
+                <script src="../js/notifications/addedAchievement.js"></script>
             <?php } else if (isset($_REQUEST['addedWater'])) { ?>
-                <script>
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        onOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    });
-
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Water intake for today was added successfully!'
-                    })
-                </script>
+                <script src="../js/notifications/addedWater.js"></script>
             <?php } else if (isset($_REQUEST['addedGoals'])) { ?>
-                <script>
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        onOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    });
-
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Your goals were updated. Good luck!'
-                    })
-                </script>
+                <script src="../js/notifications/updatedGoals.js"></script>
             <?php } ?>
             <div id="tab-overview" class="tab hidden">
                 <p class="unselectable" id="overview-weekly-goals"><span>Weekly</span> Goals</p>
