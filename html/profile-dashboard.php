@@ -119,7 +119,9 @@ $achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['us
                 <span> <?= $fname ?> </span>
             <p>
         </div>
-
+        <?php
+        include('../backend/getWaterGoals.php');
+        ?>
         <div id="content">
             <?php if (isset($_REQUEST['addedAchievement'])) { ?>
                 <script>
@@ -157,6 +159,25 @@ $achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['us
                     Toast.fire({
                         icon: 'success',
                         title: 'Water intake for today was added successfully!'
+                    })
+                </script>
+            <?php } else if (isset($_REQUEST['addedGoals'])) { ?>
+                <script>
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Your goals were updated. Good luck!'
                     })
                 </script>
             <?php } ?>
@@ -221,7 +242,7 @@ $achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['us
                 <?php include("tab-water.inc.php")?>
             </div>
             <div id="tab-goals" class="tab hidden">
-                Goals
+                <?php include("tab-goals.inc.php")?>
             </div>
         </div>
     </div>

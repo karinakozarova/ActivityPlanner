@@ -42,8 +42,10 @@ include('../backend/getDailyWaterIntake.php');
     <input type="submit">
 </form>
 <h4> Water statistics</h4>
-<div class="chart-wrapper" id="activity-chart-container">
+<div class="chart-wrapper chart-container" id="activity-chart-container" style="position: relative; height:40vh; width:60vw">
     <canvas id="line-chartcanvas" width="200px" height="80px"></canvas>
+    </div>
+
 </div>
 <?php
 $date = date('Y-m-d');
@@ -60,7 +62,7 @@ for($i = (int) $daynum; $i >= 0; $i--){
 }
 ?>
 <script>
-    var inputData = [];
+    var inputData = [0,0,0,0,0,0,0];
     var dates = [];
     dates = <?= json_encode($dates)?>;
 
@@ -70,7 +72,7 @@ for($i = (int) $daynum; $i >= 0; $i--){
             url: '../backend/getWaterIntake.php?date=' + item,
             date: item,
             success: function(res) {
-                inputData[index] = res;
+                inputData[index - 1] = res;
             }
         });
     });
@@ -78,19 +80,29 @@ for($i = (int) $daynum; $i >= 0; $i--){
 
     $(function () {
         var ctx = $("#line-chartcanvas");
-        //inputData = <?php //echo json_encode([0,0,0,0,0,0,0]) ?>//;
-        //line chart data
+        var dailyGoal = <?= $waterCupsGoals ?>;
+        var goals = [dailyGoal,dailyGoal,dailyGoal,dailyGoal,dailyGoal,dailyGoal,dailyGoal]
         var data = {
             labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
             datasets: [
                 {
                     label: "Water Intake",
                     data: inputData,
-                    backgroundColor: "blue",
-                    borderColor: "lightblue",
+                    backgroundColor: "#552244",
+                    borderColor: "#552244",
                     fill: false,
                     lineTension: 0,
                     radius: 5
+                },
+                {
+                    label: "Your goals",
+                    data: goals,
+                    backgroundColor: "#1abc9c",
+                    borderColor: "#1abc9c",
+                    fill: false,
+                    lineTension: 3,
+                    radius: 0,
+
                 }
             ]
         };
