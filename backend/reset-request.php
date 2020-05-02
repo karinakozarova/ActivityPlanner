@@ -1,15 +1,14 @@
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-if (isset($_POST["reset-password-submit"]))
-{
-    try
-    {
+if (isset($_POST["reset-password-submit"])) {
+    try {
         $selector = bin2hex(random_bytes(8));
         $auth_token = random_bytes(32);
 
-        $url = "https://i426060.hera.fhict.nl/html/change-new-password.php?selector=".$selector."&validator=".bin2hex($auth_token);
+        $url = "https://i426060.hera.fhict.nl/html/change-new-password.php?selector=" . $selector . "&validator=" . bin2hex($auth_token);
 
         $expiry_date = date("U") + 1800;
 
@@ -37,11 +36,11 @@ if (isset($_POST["reset-password-submit"]))
         $emailSubject = "Reset your MK3Planner password";
         $emailMsg = '<p>A password reset request has been sent to us. If you were the person who made this request, click on the link below. Otherwise, please ignore this e-mail.</p>';
         $emailMsg .= '<p>Here is your password reset link: </br>';
-        $emailMsg .= '<a href="'.$url.'">'.$url.'</a></p>';
+        $emailMsg .= '<a href="' . $url . '">' . $url . '</a></p>';
 
-        $headers = "From: MK3Planner <i426060@hera.fhict.nl>"."\r\n";
-        $headers .= "Reply-To: i426060@hera.fhict.nl"."\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8"."\r\n";
+        $headers = "From: MK3Planner <i426060@hera.fhict.nl>" . "\r\n";
+        $headers .= "Reply-To: i426060@hera.fhict.nl" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
         mail($userEmail, $emailSubject, $emailMsg, $headers);
 
@@ -77,22 +76,14 @@ if (isset($_POST["reset-password-submit"]))
         catch (\Exception $e) { echo $e->getMessage(); }*/
 
         header("Location: ../html/reset-password.php?reset=success");
-    }
-    catch (Exception $e)
-    {
-        echo $e;
-        var_dump("Error: " . $e);
-        die;
-
+    } catch (Exception $e) {
         $conn = null;
         session_unset();    // remove all session variables
         session_destroy();    // destroy the session
 
-        header('Location: ../index.php');
+        var_dump("Error: " . $e);
+        die;
     }
-}
-else
-{
+} else {
     header("Location: ../index.php");
 }
-?>

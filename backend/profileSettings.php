@@ -2,10 +2,8 @@
 session_start();
 include '../configurations/db.php';
 if (!isset($_SESSION['userid'])) header('Location: ../index.php');
-else
-{
-    try
-    {
+else {
+    try {
         $_SESSION["firstname"] = $_POST["firstname"];
         $_SESSION["lastname"] = $_POST["lastname"];
         $_SESSION["email"] = $_POST["email"];
@@ -18,10 +16,8 @@ else
         $statement->bindValue(":userid", $_SESSION["userid"]);
         $count = $statement->execute();
 
-        if(isset($_FILES['profilepic']))
-        {
-            try
-            {
+        if (isset($_FILES['profilepic'])) {
+            try {
                 $file = $_FILES['profilepic'];
                 $fileName = $file['name'];
                 $fileTmpName = $file['tmp_name'];
@@ -31,50 +27,41 @@ else
                 $fileExt = explode('.', $fileName);
                 $fileActualExt = strtolower(end($fileExt));
 
-                if($fileError === 0 && $fileSize < 512000)
-                {
-                    $fileNewName = $_SESSION["userid"].".".$fileActualExt;
+                if ($fileError === 0 && $fileSize < 512000) {
+                    $fileNewName = $_SESSION["userid"] . "." . $fileActualExt;
 
-                    $fileDestination = "../uploads/".$fileNewName;
+                    $fileDestination = "../uploads/" . $fileNewName;
                     move_uploaded_file($fileTmpName, $fileDestination);
 
-                    try
-                    {
+                    try {
                         $sql = "UPDATE accounts SET avatar_path=:filepath WHERE user_id=:userid";
                         $statement = $conn->prepare($sql);
                         $statement->bindValue(":filepath", $fileNewName);
                         $statement->bindValue(":userid", $_SESSION["userid"]);
                         $count = $statement->execute();
+                    } catch (PDOException $e) {
+                        var_dump("Error: " . $e);
+                        die;
                     }
-                    catch (PDOException $e) { var_dump("Error: " . $e); }
                 }
-            }
-            catch (Exception $e)
-            {
-                var_dump("Error: " . $e);
-                die;
-
+            } catch (Exception $e) {
                 $conn = null;
                 session_unset();    // remove all session variables
                 session_destroy();    // destroy the session
 
-                header('Location: ../index.php');
+                var_dump("Error: " . $e);
+                die;
             }
         }
 
         $conn = null;
         header('Location: ../html/profile-dashboard.php');
-    }
-    catch (Exception $e)
-    {
-        var_dump("Error: " . $e);
-        die;
-
+    } catch (Exception $e) {
         $conn = null;
         session_unset();    // remove all session variables
         session_destroy();    // destroy the session
 
-        header('Location: ../index.php');
+        var_dump("Error: " . $e);
+        die;
     }
 }
-?>

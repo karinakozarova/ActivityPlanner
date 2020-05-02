@@ -10,7 +10,6 @@ if (isset($_POST["is_register"])) {
 
     try {
         // insert login info into db
-
         $hashed_password = password_hash($psswd, PASSWORD_DEFAULT);
 
         $sql = "INSERT INTO users (username, password, role_id)
@@ -38,6 +37,7 @@ if (isset($_POST["is_register"])) {
             header('Location: register.php');
             exit;
         }
+        // an unknown error happened
         session_unset();    // remove all session variables
         session_destroy();    // destroy the session
         var_dump("Error: " . $e);
@@ -72,19 +72,16 @@ if (isset($_POST["is_register"])) {
         $row = $info_query->fetch();
         $_SESSION["role"] = strtoupper($row["role"]);
 
-        $file_path = '../uploads/'.$avatar_path;
+        $file_path = '../uploads/' . $avatar_path;
         $profilepic = '';
-        if(isset($avatar_path)) $profilepic = $file_path;
+        if (isset($avatar_path)) $profilepic = $file_path;
         else $profilepic = '../uploads/default-avatar.jpg';
 
     } catch (PDOException $e) {
-        var_dump("Error: " . $e);
-        die;
-
         session_unset();    // remove all session variables
         session_destroy();    // destroy the session
-
-        header('Location: ../index.php');
+        var_dump("Error: " . $e);
+        die;
     }
 }
 

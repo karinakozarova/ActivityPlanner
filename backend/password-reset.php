@@ -1,16 +1,19 @@
 <?php
-if(isset($_POST["reset-password-submit"]))
-{
-    try
-    {
+if (isset($_POST["reset-password-submit"])) {
+    try {
         $selector = $_POST["selector"];
         $validator = $_POST["validator"];
         $password = $_POST["password"];
         $password_repeat = $_POST["password-repeat"];
 
         //An extra check whether the user has entered a valid password
-        if(empty($password) || empty($password_repeat)) { header("Location: ../html/reset-password.php"); exit();}
-        else if($password != $password_repeat){ header("Location: ../html/reset-password.php"); exit();}
+        if (empty($password) || empty($password_repeat)) {
+            header("Location: ../html/reset-password.php");
+            exit();
+        } else if ($password != $password_repeat) {
+            header("Location: ../html/reset-password.php");
+            exit();
+        }
 
         $currentDate = date("U");
 
@@ -22,8 +25,7 @@ if(isset($_POST["reset-password-submit"]))
         $statement->execute();
         $row = $statement->fetch();
 
-        if(count($row) <= 0)
-        {
+        if (count($row) <= 0) {
             header("Location: ../html/reset-password.php");
             $conn = null;
             exit();
@@ -32,14 +34,11 @@ if(isset($_POST["reset-password-submit"]))
         $tokenBin = hex2bin($validator);
         $tokenCheck = password_verify($tokenBin, $row["pwdResetToken"]);
 
-        if($tokenCheck === false)
-        {
+        if ($tokenCheck === false) {
             echo "Please resubmit your reset request.";
             $conn = null;
             exit();
-        }
-        elseif ($tokenCheck === true)
-        {
+        } elseif ($tokenCheck === true) {
             $tokenEmail = $row["pwdResetEmail"];
             $user_id_query = $conn->prepare("SELECT user_id FROM accounts WHERE email=:email");
             $user_id_query->bindValue(":email", $tokenEmail);
@@ -67,21 +66,14 @@ if(isset($_POST["reset-password-submit"]))
             header('Location: ../html/login.php?password=updated');
         }
         $conn = null;
-    }
-    catch (Exception $e)
-    {
-        var_dump("Error: " . $e);
-        die;
-
+    } catch (Exception $e) {
         $conn = null;
         session_unset();    // remove all session variables
         session_destroy();    // destroy the session
 
-        header('Location: ../index.php');
+        var_dump("Error: " . $e);
+        die;
     }
-}
-else
-{
+} else {
     header("Location: ../index.php");
 }
-?>

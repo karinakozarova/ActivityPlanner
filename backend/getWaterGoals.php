@@ -10,4 +10,4 @@ $query = $conn->prepare("SELECT cups FROM water_goals WHERE user_id=\"$userId\" 
 $query->execute();
 $element = $query->fetch();
 
-$waterCupsGoals =  $element['cups'] == NULL ? 0 : $element['cups'];
+$waterCupsGoals = $element['cups'] == NULL ? 0 : $element['cups'];
