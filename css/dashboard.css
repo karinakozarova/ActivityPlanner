@@ -1,3 +1,5 @@
+/* Dashboard Page Styling */
+
 .hidden {
     display: none;
 }
@@ -10,7 +12,6 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     margin-bottom: 15px;
-    /*width: 40%;*/
 }
 
 .card:hover {
@@ -60,7 +61,7 @@
     max-height: 1rem;
 }
 
-.btn-light{
+.btn-light {
     background-color: #f8f9fa;
     color: black;
     width: 20%;
@@ -180,9 +181,10 @@
 #activity-chart-container {
     box-sizing: border-box;
     position: relative;
-    height:250px;
-    width:90%;
+    height: 250px;
+    width: 90%;
 }
+
 .chart-wrapper {
     display: block;
 }

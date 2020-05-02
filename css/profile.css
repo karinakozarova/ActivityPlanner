@@ -1,3 +1,5 @@
+/* The styling for the profile on the dashboard */
+
 body {
     background-color: #282828;
     margin: 0;
@@ -74,14 +76,12 @@ body {
     background-color: #e3e3e3;
 }
 
-#edit-profile-link
-{
+#edit-profile-link {
     text-decoration: none;
     color: #000000;
 }
 
-#edit-profile-button
-{
+#edit-profile-button {
     margin: 1em;
 }
 

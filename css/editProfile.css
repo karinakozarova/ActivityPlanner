@@ -1,3 +1,4 @@
+/* Profile editing Styling */
 .profile-content {
     display: block;
 }
@@ -10,7 +11,7 @@
 
 .form-wrapper {
     display: block;
-    width:100%;
+    width: 100%;
 }
 
 .block-wrapper {
@@ -60,8 +61,7 @@
     transition: .2s;
 }
 
-.form-edit-account button:hover
-{
+.form-edit-account button:hover {
     background-color: #9c0909;
     fill: #ebebeb;
     color: #ebebeb;
@@ -89,8 +89,7 @@
     display: none !important;
 }
 
-.upload-file-button
-{
+.upload-file-button {
     position: absolute;
     top: 80px;
     left: 120px;
@@ -132,6 +131,7 @@
 #settings-nav li {
     width: 100%;
 }
+
 #settings-nav li:hover {
     font-weight: bold;
 }
