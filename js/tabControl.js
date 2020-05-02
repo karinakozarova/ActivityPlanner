@@ -37,6 +37,7 @@ function showGoals() {
     document.getElementById("tab-goals").classList.remove(hidden_class);
     document.getElementById("nav-goals").classList.add(active_class);
 }
+
 function showWaterIntake() {
     hideAll();
     document.getElementById("tab-water").classList.remove(hidden_class);
