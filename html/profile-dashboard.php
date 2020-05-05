@@ -130,6 +130,26 @@ $achievementsCount = Achievement::getUserAchievementsCount($_SESSION['userid']);
         <div id="content">
             <?php if (isset($_REQUEST['addedAchievement'])) { ?>
                 <script src="../js/notifications/addedAchievement.js"></script>
+            <?php }
+            if (isset($_REQUEST['editedAchievement'])) { ?>
+                <script>
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Achievement was edited successfully!'
+                    })
+                </script>
             <?php } else if (isset($_REQUEST['addedWater'])) { ?>
                 <script src="../js/notifications/addedWater.js"></script>
             <?php } else if (isset($_REQUEST['addedGoals'])) { ?>
