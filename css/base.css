@@ -35,3 +35,11 @@ body {
     font-weight: bold;
     color: #8f8f8f;
 }
+
+.no-decorations {
+    text-decoration: none;
+}
+
+.green-text{
+    color: rgba(13, 78, 18, 0.7);
+}

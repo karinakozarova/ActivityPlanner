@@ -103,6 +103,16 @@ $achievementsCount = Achievement::getUserAchievementsCount($_SESSION['userid']);
                         </div>
                     </a>
                 </li>
+                <?php if ($_SESSION['role'] == "COACH") { ?>
+                <li>
+                    <a href="../html/coachpage.php">
+                        <div class="nav-item">
+                            <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M15.517 24h-11.646c.522-3.035.897-6.162-.422-8.028-1.666-2.357-2.43-4.742-2.449-6.883-.045-5.19 4.231-9.114 10.203-9.089 7.236.03 9.328 6.156 9.773 7.943.34 1.369-.898 1.869-.166 2.702.596.679 1.035 1.364 1.789 2.177.292.315.405.646.401.943-.006.434-.291.798-.748.958-.429.15-.76.32-1.215.443-.145 1.16-.521 2.572-.798 3.557-.737 2.62-2.896 1.059-3.881 2.607-.426.668-.64 1.738-.841 2.67zm-3.844-19h-1.346c-.243.681-.312 1.122-.842 1.341-.53.22-.888-.041-1.545-.353l-.952.952c.311.654.573 1.015.353 1.545-.219.53-.66.599-1.341.841v1.347c.68.242 1.122.312 1.341.842.222.534-.047.902-.353 1.544l.952.952c.652-.309 1.015-.573 1.545-.353v.001c.529.219.599.657.842 1.341h1.346c.243-.682.313-1.121.845-1.343h.001c.526-.219.883.042 1.541.354l.952-.952c-.31-.651-.573-1.014-.354-1.544.219-.529.662-.6 1.342-.842v-1.347c-.688-.244-1.123-.313-1.341-.841-.22-.53.041-.89.353-1.545l-.952-.952c-.651.31-1.014.573-1.545.353-.529-.219-.598-.657-.842-1.341zm-.673 6.667c-.92 0-1.667-.747-1.667-1.667 0-.921.747-1.667 1.667-1.667s1.667.746 1.667 1.667c0 .92-.747 1.667-1.667 1.667z"/></svg>
+                            <p> Coach page </p>
+                        </div>
+                    </a>
+                </li>
+                <?php } ?>
                 <li>
                     <a href="../backend/signout.php">
                         <div class="nav-item">
@@ -132,24 +142,7 @@ $achievementsCount = Achievement::getUserAchievementsCount($_SESSION['userid']);
                 <script src="../js/notifications/addedAchievement.js"></script>
             <?php }
             if (isset($_REQUEST['editedAchievement'])) { ?>
-                <script>
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        onOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Achievement was edited successfully!'
-                    })
-                </script>
+                <script src="../js/notifications/editAchievement.js"></script>
             <?php } else if (isset($_REQUEST['addedWater'])) { ?>
                 <script src="../js/notifications/addedWater.js"></script>
             <?php } else if (isset($_REQUEST['addedGoals'])) { ?>
