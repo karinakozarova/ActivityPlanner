@@ -1,5 +1,5 @@
 <?php
-$achievements = $achievements->getUserAchievements($conn, $_SESSION['userid']);
+$achievements = $achievements->getUserAchievements($_SESSION['userid']);
 ?>
 
 <h2>
