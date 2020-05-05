@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class WaterGoals
  */
@@ -31,4 +32,3 @@ class WaterGoals
         $query->execute();
     }
 }
-

@@ -1,13 +1,13 @@
 <?php
 require_once("../configurations/credentials.php");
+require_once("../backend/waterIntake.class.php");
+
 session_start();
+$quantity = 0;
 $userId = $_SESSION['userid'];
-$quantity = $_REQUEST['quantity'];
 $date = date("Y-m-d H:i:s");
 
-$conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$query = $conn->prepare("INSERT INTO water_intake(user_id, cups, date) VALUES (\"$userId\",\"$quantity\",\"$date\")");
-$query->execute();
-$conn = null;
+if (isset($_REQUEST['quantity']) && $_REQUEST['quantity'] != '') $quantity = $_REQUEST['quantity'];
+
+WaterIntake::addWaterIntake($userId, $quantity, $date);
 header('Location: ../html/profile-dashboard.php?addedWater');
