@@ -1,3 +1,8 @@
+const MORNING_START = 4;
+const AFTERNOON_START = 12;
+const EVENING_START = 18;
+const NIGHT_START = 22;
+
 function updateGreeting() {
     setInterval(greeting, 1000 * 60 * 60); // called every hour
     greeting();
@@ -6,11 +11,11 @@ function updateGreeting() {
 function greeting() {
     const currentHour = new Date().getHours();
 
-    if (currentHour > 4 && currentHour < 12) {
+    if (currentHour > MORNING_START && currentHour < AFTERNOON_START) {
         greeting = "Good morning";
-    } else if (currentHour < 18) {
+    } else if (currentHour < EVENING_START) {
         greeting = "Good afternoon";
-    } else if (currentHour < 22) {
+    } else if (currentHour < NIGHT_START) {
         greeting = "Good evening";
     } else {
         greeting = "Good night";

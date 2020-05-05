@@ -1,3 +1,5 @@
+/* The styling for the profile on the dashboard */
+
 body {
     background-color: #282828;
     margin: 0;
@@ -23,6 +25,18 @@ body {
     box-shadow: 0 0 5px #000000;
     -moz-box-shadow: 0 0 5px #000000;
     -webkit-box-shadow: 0 0 5px #000000;
+}
+
+.gray-shadow {
+    box-shadow: 0 0 15px #c4c4c4;
+    -moz-box-shadow: 0 0 15px #c4c4c4;
+    -webkit-box-shadow: 0 0 15px #c4c4c4;
+}
+
+.small-gray-shadow {
+    box-shadow: 0 0 5px #c4c4c4;
+    -moz-box-shadow: 0 0 5px #c4c4c4;
+    -webkit-box-shadow: 0 0 5px #c4c4c4;
 }
 
 .profile-sidebar {
@@ -62,14 +76,12 @@ body {
     background-color: #e3e3e3;
 }
 
-#edit-profile-link
-{
+#edit-profile-link {
     text-decoration: none;
     color: #000000;
 }
 
-#edit-profile-button
-{
+#edit-profile-button {
     margin: 1em;
 }
 

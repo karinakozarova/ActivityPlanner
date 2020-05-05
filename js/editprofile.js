@@ -15,28 +15,20 @@ function validateEmail(email) {
 
 function validateImage(image) {
     var filePath = image.value;
-    if(filePath != "")
-    {
+    if (filePath != "") {
         let fileExt = filePath.substring(filePath.lastIndexOf('.') + 1).toLowerCase();
-        if(image.files && image.files[0])
-        {
-            if(fileExt == "jpg" || fileExt == "jpeg" || fileExt == "png")
-            {
+        if (image.files && image.files[0]) {
+            if (fileExt == "jpg" || fileExt == "jpeg" || fileExt == "png") {
                 let fileSize = image.files[0].size;
-                if(fileSize > 512000)
-                {
+                if (fileSize > 512000) {
                     visualizeError('imageUploadError');
                     document.getElementById('uploadErrorMessage').innerHTML = "Maximum file size is 500kb";
                     return false;
-                }
-                else
-                {
+                } else {
                     document.getElementById('settings-profilepic').src = window.URL.createObjectURL(image.files[0])
                     return true;
                 }
-            }
-            else
-            {
+            } else {
                 visualizeError('imageUploadError');
                 document.getElementById('uploadErrorMessage').innerHTML = "Your profile picture needs to be of file type jpg, jpeg or png";
                 return false;
@@ -57,8 +49,7 @@ function validateForm() {
             inputs[index].style.borderWidth = "2px";
             inputs[index].focus();
             return false;
-        }
-        else {
+        } else {
             inputs[index].style.borderWidth = "1px";
             inputs[index].style.borderColor = "#999999";
         }
@@ -81,13 +72,10 @@ function validateForm() {
     return true;
 }
 
-function validateFileUpload()
-{
+function validateFileUpload() {
     let file = document.getElementById('profilepic');
-    if(validateImage(file))
-    {
+    if (validateImage(file)) {
         hideError('imageUploadError');
         return true;
-    }
-    else return false;
+    } else return false;
 }

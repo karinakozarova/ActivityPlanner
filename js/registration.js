@@ -36,19 +36,18 @@ function validateForm() {
         hideError('passwordsMatchError');
     }
 
-    let firstname = document.getElementById('firstname');
+    let firstname = document.etElementById('firstname');
     let username = document.getElementById('username');
     let passwordStr = String(password1.value);
-    if (passwordStr.indexOf(username.value) !== -1 || passwordStr.indexOf(firstname.value) !== -1)
-    {
+    if (passwordStr.indexOf(username.value) !== -1 || passwordStr.indexOf(firstname.value) !== -1) {
         vizualiseError('passwordContainsError');
         return false;
     } else {
         hideError('passwordContainsError')
     }
 
-    let email = document.getElementById('email');
     // check email is valid
+    let email = document.getElementById('email');
     if (!validateEmail(email.value)) {
         vizualiseError('validMailError');
         return false;
@@ -56,5 +55,6 @@ function validateForm() {
         hideError('validMailError');
     }
 
+    // everything was fine
     return true;
 }

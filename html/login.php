@@ -10,6 +10,7 @@ session_start();
 
 <head>
     <title> Login </title>
+
     <!-- Fonts imports -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
@@ -22,7 +23,7 @@ session_start();
 </head>
 
 <body>
-<?php require_once "../configurations/db.php"; ?>
+<?php require_once("../configurations/db.php"); ?>
 
 <div class="column">
     <div class="form centered">
@@ -39,10 +40,12 @@ session_start();
                 $username = $_POST['username'];
                 $password = $_POST['password'];
 
-                $login_query = $conn->prepare("SELECT id FROM users WHERE username=\"$username\" AND password=\"$password\"");
+                $login_query = $conn->prepare("SELECT password FROM users WHERE username=:username");
+                $login_query->bindValue(":username", $username);
                 $login_query->execute();
+                $row = $login_query->fetch();
 
-                if ($login_query->rowCount() > 0) {
+                if (password_verify($password, $row["password"])) {
                     $_SESSION["username"] = $_POST['username'];
                     header('Location: profile-dashboard.php');
                     exit;
@@ -53,19 +56,21 @@ session_start();
         }
         ?>
         <?php
-        if(isset($_GET["password"]))
-        {
-            if($_GET["password"] == "updated")
-            { ?>
+        if (isset($_GET["password"])) {
+            if ($_GET["password"] == "updated") { ?>
                 <div class="success-message"> Successfully changed password.</div>
-            <?php
+                <?php
             }
         }
         ?>
-        <div class="error-message <?php if ($invalidLogin == false) { echo "hidden"; }?>" id="invalidLoginError">
+        <div class="error-message <?php if ($invalidLogin == false) {
+            echo "hidden";
+        } ?>" id="invalidLoginError">
             Invalid login credentials. Please check your username or password and try again
         </div>
-        <div class="error-message <?php if ($missingCredentials == false) { echo "hidden"; }?>" id="populatedFieldsError">
+        <div class="error-message <?php if ($missingCredentials == false) {
+            echo "hidden";
+        } ?>" id="populatedFieldsError">
             Not all fields are populated
         </div>
         <form class="login-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">

@@ -1,0 +1,15 @@
+.radio-inline {
+    position: relative;
+    display: inline-block;
+    margin: 0 2em;
+    vertical-align: baseline;
+    cursor: pointer;
+}
+
+body {
+    padding: 0px;
+}
+
+.form {
+    margin: 0;
+}

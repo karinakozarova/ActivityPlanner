@@ -20,35 +20,33 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<!-- Content -->
 <div class="column">
     <div class="form centered">
         <?php
-          $selector = $_GET["selector"];
-          $validator = $_GET["validator"];
+        $selector = $_GET["selector"];
+        $validator = $_GET["validator"];
 
-          if(empty($selector) || empty($validator))
-          {
-              echo "<p>Failed to validate your request.</p>";
-          }
-          else
-          {
-              if(ctype_xdigit($selector) == true && ctype_xdigit($validator) == true)
-              {
-                  ?>
-                  <form action="../backend/password-reset.php" method="post">
-                      <input type="hidden" name="selector" value="<?php echo $selector; ?>">
-                      <input type="hidden" name="validator" value="<?php echo $validator; ?>">
-                      <label>
-                          <input type="password" placeholder="Enter new password" id="password" name="password"/>
-                      </label>
-                      <label>
-                          <input type="password" placeholder="Repeat new password" id="confirmPassword" name="password-repeat"/>
-                      </label>
-                      <button class="bold" name="reset-password-submit">Reset password</button>
-                  </form>
-                  <?php
-              }
-          }
+        if (empty($selector) || empty($validator)) {
+            echo "<p>Failed to validate your request.</p>";
+        } else {
+            if (ctype_xdigit($selector) == true && ctype_xdigit($validator) == true) {
+                ?>
+                <form action="../backend/password-reset.php" method="post">
+                    <input type="hidden" name="selector" value="<?php echo $selector; ?>">
+                    <input type="hidden" name="validator" value="<?php echo $validator; ?>">
+                    <label>
+                        <input type="password" placeholder="Enter new password" id="password" name="password"/>
+                    </label>
+                    <label>
+                        <input type="password" placeholder="Repeat new password" id="confirmPassword"
+                               name="password-repeat"/>
+                    </label>
+                    <button class="bold" name="reset-password-submit">Reset password</button>
+                </form>
+                <?php
+            }
+        }
         ?>
     </div>
 </div>

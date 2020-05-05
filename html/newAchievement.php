@@ -8,6 +8,7 @@
 <html lang="en">
 <head>
     <title>My Profile</title>
+
     <!-- Fonts imports -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
@@ -27,14 +28,13 @@
 session_start();
 include '../configurations/db.php';
 include '../backend/login.php';
-include '../backend/utils.php';
 include '../backend/achievements.php';
 ?>
 
 <div class="big-container shadow">
     <div class="profile-sidebar">
         <div id="profile-picture">
-            <img class="small-shadow center" src="<?=$profilepic?>" alt="Planning Image Here" height="150"
+            <img class="small-shadow center" src="<?= $profilepic ?>" alt="Planning Image Here" height="150"
                  width="150">
             <h3> <?= $fname ?> <?= $lname ?></h3>
             <h4> <?= $role ?></h4>
@@ -81,14 +81,12 @@ include '../backend/achievements.php';
                 <br>
 
                 <p> Received on:</p>
-
                 <input type="datetime-local" id="datePicker"
                        name="meeting-time" value="">
                 <button class="bold" type="submit">Add achievement</button>
 
                 <input type="hidden" name="user_id" value="<?= $_SESSION['userid'] ?>">
             </form>
-
         </div>
     </div>
 </div>
