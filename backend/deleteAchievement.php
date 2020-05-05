@@ -3,6 +3,8 @@ require_once("../configurations/credentials.php");
 require_once("../backend/achievements.php");
 
 $id = $_REQUEST['id'];
+$userId = $_SESSION['userid'] ?? null;
 
-Achievement::deleteAchievement($id);
+if ($userId != null) Achievement::deleteAchievement($id);
+
 header('Location: ../html/profile-dashboard.php');
