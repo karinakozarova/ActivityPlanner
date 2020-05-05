@@ -1,11 +1,15 @@
 <?php
 
+/**
+ * Class Achievement
+ */
 class Achievement
 {
     public $name;
     public $description;
     public $receivedOn;
     public $id;
+
     /**
      * @param $name
      * @param $userId
