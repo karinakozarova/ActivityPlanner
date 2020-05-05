@@ -16,7 +16,11 @@ class WaterGoals
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $query = $conn->prepare("SELECT cups FROM water_goals WHERE user_id=\"$userId\" ORDER BY id desc LIMIT 1");
         $query->execute();
-        return $query->fetch();
+        if ($query->rowCount() > 0) {
+            return $query->fetch();
+        } else{
+            return null;
+        }
     }
 
     /**
