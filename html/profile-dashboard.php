@@ -128,6 +128,7 @@ $achievementsCount = Achievement::getUserAchievementsCount($_SESSION['userid']);
         ?>
         <div id="content">
             <?php if (isset($_REQUEST['addedAchievement'])) { ?>
+<<<<<<< HEAD
                 <script src="../js/notifications/addedAchievement.js"></script>
             <?php } else if (isset($_REQUEST['addedWater'])) { ?>
                 <script src="../js/notifications/addedWater.js"></script>
@@ -212,6 +213,8 @@ $achievementsCount = Achievement::getUserAchievementsCount($_SESSION['userid']);
                         <p>Distance</p>
                     </div>
                 </div>
+=======
+>>>>>>> parent of a10ebb5... added edit functionality
                 <script>
                     $(document).ready(function () {
                         $('#calories-progressbar').radialIndicator({
@@ -252,6 +255,7 @@ $achievementsCount = Achievement::getUserAchievementsCount($_SESSION['userid']);
                         });
                     });
                 </script>
+<<<<<<< HEAD
 
                 <div class="big-container small-gray-shadow" id="activityChart">
                     <p class="unselectable" id="activityChartTitle"><span>Weekly</span> Statistics</p>
@@ -259,6 +263,11 @@ $achievementsCount = Achievement::getUserAchievementsCount($_SESSION['userid']);
                         <canvas id="myChart" width="200px" height="100px"></canvas>
                     </div>
                 </div>
+=======
+            <?php } ?>
+            <div id="tab-overview" class="tab hidden">
+                Overview
+>>>>>>> parent of a10ebb5... added edit functionality
             </div>
             <div id="tab-planner" class="tab hidden">
                 Planner

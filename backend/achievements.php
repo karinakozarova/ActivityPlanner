@@ -9,7 +9,6 @@ class Achievement
     public $description;
     public $receivedOn;
     public $id;
-
     /**
      * @return PDO
      */
@@ -22,6 +21,7 @@ class Achievement
     }
 
     /**
+<<<<<<< HEAD
      * @param $name
      * @param $userId
      * @param $description
@@ -37,6 +37,9 @@ class Achievement
     }
 
     /**
+=======
+     * @param $conn
+>>>>>>> parent of a10ebb5... added edit functionality
      * @param $userId
      * @return array $item
      */
@@ -64,6 +67,7 @@ class Achievement
     /**
      * @param $userId
      * @return int
+<<<<<<< HEAD
      */
     public static function getUserAchievementsCount($userId)
     {
@@ -76,6 +80,8 @@ class Achievement
 
     /**
      * @param $id
+=======
+>>>>>>> parent of a10ebb5... added edit functionality
      */
     public static function deleteAchievement($id)
     {
