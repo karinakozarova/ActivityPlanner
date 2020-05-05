@@ -188,3 +188,17 @@
 .chart-wrapper {
     display: block;
 }
+
+#tab-planner {
+    margin: 0 2em 2em 0;
+}
+
+#scheduler {
+    padding: 2em;
+    margin: auto 0 auto 0;
+}
+
+.scheduler-workout-alt {
+    background-color: #5ce65c !important;
+    border-color: #3f9e3f !important;
+}

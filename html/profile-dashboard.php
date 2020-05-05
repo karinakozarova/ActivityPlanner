@@ -14,6 +14,7 @@
     <!-- Stylesheets imports -->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="../js/jquery-sked-tape/dist/jquery.skedTape.css" rel="stylesheet">
     <link href="../css/profile.css" rel="stylesheet">
     <link href="../css/dashboard.css" rel="stylesheet">
 
@@ -24,7 +25,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/radialIndicator/1.4.0/radialIndicator.min.js"></script>
+    <script src="../js/jquery-sked-tape/dist/jquery.skedTape.js"></script>
     <script src="../js/overviewControls.js"></script>
+    <script src="../js/plannerControls.js"></script>
 
     <!-- Viewport Configuration -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,6 +38,7 @@ session_start();
 include '../configurations/db.php';
 include '../backend/login.php';
 include '../backend/achievements.php';
+include '../backend/workouts.php';
 
 $achievements = new Achievement();
 $achievementsCount = Achievement::getUserAchievementsCount($_SESSION['userid']);
@@ -282,7 +286,9 @@ $achievementsCount = Achievement::getUserAchievementsCount($_SESSION['userid']);
                 </div>
             </div>
             <div id="tab-planner" class="tab hidden">
-                Planner
+                <!--Planner here-->
+                <div id="scheduler"></div>
+                <?php include("tab-planner.inc.php") ?>
             </div>
             <div id="tab-achievements" class="tab hidden">
                 <?php include("tab-achivements.inc.php") ?>
