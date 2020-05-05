@@ -21,38 +21,40 @@ $date = date('Y-m-d');
 $dayOfWeek = date("l", strtotime($date));
 //Print out the day that our date fell on
 $daynum = date("w", strtotime($dayOfWeek));
-if ($dayOfWeek = "Sunday") $daynum = 6;
+    if ($dayOfWeek = "Sunday") $daynum = 6;
 $dates = [];
 
 for ($i = (int)$daynum; $i >= 0; $i--) {
     $ago = '-' . $i . ' days';
     $thisDate = date("Y-m-d", strtotime($ago, strtotime($date)));
-    $dates[] = $thisDate;
+        $dates[] = $thisDate;
 }
 ?>
 <script>
-    var inputData = [0, 0, 0, 0, 0, 0, 0];
-    var dates = [];
+    let inputData = [0, 0, 0, 0, 0, 0, 0];
+    let dates = [];
+    let dayNames = [];
     dates = <?= json_encode($dates)?>;
-
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     dates.forEach(function (item, index) {
         $.ajax({
             type: 'get',
             url: '../backend/getWaterIntake.php?date=' + item,
             date: item,
             success: function (res) {
-                inputData[index - 1] = res;
+                inputData[index] = res;
             }
         });
+        const currentDay = new Date(item);
+        dayNames[index] = days[currentDay.getDay()];
     });
 
-
     $(function () {
-        var ctx = $("#line-chartcanvas");
-        var dailyGoal = <?= $waterCupsGoals ?>;
-        var goals = [dailyGoal, dailyGoal, dailyGoal, dailyGoal, dailyGoal, dailyGoal, dailyGoal]
-        var data = {
-            labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        let ctx = $("#line-chartcanvas");
+        let dailyGoal = <?= $waterCupsGoals ?>;
+        const goals = [dailyGoal, dailyGoal, dailyGoal, dailyGoal, dailyGoal, dailyGoal, dailyGoal];
+        const data = {
+            labels: dayNames,
             datasets: [
                 {
                     label: "Water Intake",
@@ -77,7 +79,7 @@ for ($i = (int)$daynum; $i >= 0; $i--) {
         };
 
         //options
-        var options = {
+        const options = {
             responsive: true,
             title: {
                 display: true,
@@ -96,7 +98,7 @@ for ($i = (int)$daynum; $i >= 0; $i--) {
         };
 
         //create Chart class object
-        var chart = new Chart(ctx, {
+        const chart = new Chart(ctx, {
             type: "line",
             data: data,
             options: options
