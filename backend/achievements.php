@@ -11,6 +11,17 @@ class Achievement
     public $id;
 
     /**
+     * @return PDO
+     */
+    public static function getConnection()
+    {
+        require("../configurations/credentials.php");
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $conn;
+    }
+
+    /**
      * @param $name
      * @param $userId
      * @param $description
@@ -18,9 +29,7 @@ class Achievement
      */
     public static function addAchievement($name, $userId, $description, $time)
     {
-        require_once("../configurations/credentials.php");
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn = self::getConnection();
         $query = $conn->prepare("INSERT INTO achievements(name, user_id, description, received_on) VALUES (\"$name\",\"$userId\",\"$description\",\"$time\")");
         $query->execute();
         $conn = null;
@@ -28,14 +37,13 @@ class Achievement
     }
 
     /**
-     * @param $conn
      * @param $userId
      * @return array $item
      */
-    public static function getUserAchievements($conn, $userId)
+    public static function getUserAchievements($userId)
     {
         $achievements = [];
-
+        $conn = self::getConnection();
         $query = $conn->prepare("SELECT name, user_id, description, received_on, id FROM achievements WHERE user_id=\"$userId\"");
         $query->execute();
         $elements = $query->fetchAll();
@@ -54,16 +62,25 @@ class Achievement
     }
 
     /**
-     * @param $conn
      * @param $userId
      * @return int
      */
-    public static function getUserAchievementsCount($conn, $userId)
+    public static function getUserAchievementsCount($userId)
     {
+        $conn = self::getConnection();
         $query = $conn->prepare("SELECT count(*) as count FROM achievements WHERE user_id=\"$userId\"");
         $query->execute();
         $row = $query->fetch();
         return $row['count'];
     }
-}
 
+    /**
+     * @param $id
+     */
+    public static function deleteAchievement($id)
+    {
+        $conn = self::getConnection();
+        $query = $conn->prepare("DELETE FROM achievements WHERE id=\"$id\"");
+        $query->execute();
+    }
+}

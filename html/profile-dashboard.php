@@ -37,7 +37,7 @@ include '../backend/login.php';
 include '../backend/achievements.php';
 
 $achievements = new Achievement();
-$achievementsCount = Achievement::getUserAchievementsCount($conn, ($_SESSION['userid']));
+$achievementsCount = Achievement::getUserAchievementsCount($_SESSION['userid']);
 ?>
 
 <div class="big-container shadow">
