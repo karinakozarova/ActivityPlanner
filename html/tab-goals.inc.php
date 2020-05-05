@@ -13,4 +13,4 @@ include('../backend/getWaterGoals.php');
     <input type="submit">
 </form>
 
-<h4 style="color: dodgerblue"> Total water intake today: <span id="totalWater" style="color: black"> <?= $waterCupsGoals * 250?> ml (<?= $waterCupsGoals ?> cups)</span></h4>
+<h4 class="dodgerblue-text"> Total water intake today: <span id="totalWater"> <?= $waterCupsGoals * 250?> ml (<?= $waterCupsGoals ?> cups)</span></h4>
