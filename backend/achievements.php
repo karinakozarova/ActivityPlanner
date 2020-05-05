@@ -83,4 +83,40 @@ class Achievement
         $query = $conn->prepare("DELETE FROM achievements WHERE id=\"$id\"");
         $query->execute();
     }
+
+    /**
+     * @param $id
+     * @param $name
+     * @param $description
+     * @param $time
+     */
+    public static function editAchievement($id, $name, $description, $time)
+    {
+        $conn = self::getConnection();
+        $query = $conn->prepare("UPDATE achievements SET name=\"$name\",description = \"$description\",received_on=\"$time\" WHERE id = \"$id\"");
+        $query->execute();
+        header('Location: ../html/profile-dashboard.php?editedAchievement');
+    }
+
+    /**
+     * @param $id
+     * @return Achievement|null $item
+     */
+    public static function getUserAchievementById($id)
+    {
+        $conn = self::getConnection();
+        $query = $conn->prepare("SELECT name, user_id, description, received_on, id FROM achievements WHERE id=\"$id\"");
+        $query->execute();
+        $elements = $query->fetchAll();
+
+        foreach ($elements as $element) {
+            $achievement = new Achievement();
+            $achievement->description = $element["description"];
+            $achievement->name = $element["name"];
+            $achievement->receivedOn = $element["received_on"];
+            $achievement->id = $element['id'];
+            return $achievement;
+        }
+        return null;
+    }
 }
