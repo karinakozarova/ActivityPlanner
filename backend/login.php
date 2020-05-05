@@ -88,5 +88,3 @@ if (isset($_POST["is_register"])) {
 $fname = $_SESSION["firstname"];
 $lname = $_SESSION["lastname"];
 $role = $_SESSION["role"];
-
-//$conn = null; // close the PDO
