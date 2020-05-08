@@ -67,23 +67,21 @@ include '../backend/achievements.php';
     <div class="profile-content">
         <div id="profile-greeting">
             <h2>
-                Add achievement
+                Add workout
             </h2>
         </div>
         <div id="content">
-            <form class="add-achievement-form" action="../backend/addAchievement.php" method="post"
+            <form class="add-achievement-form" action="../backend/addWorkout.php" method="post"
                   onsubmit="//return validateForm()">
                 <p> Name </p>
                 <input type="text" class="wide-input" placeholder="Name" id="name" name="name"/>
                 <br>
-                <p> Description </p>
-                <textarea class="wide-input" rows="4" cols="50" name="description" id="description"> </textarea>
+                <p>Start</p>
+                <input type="datetime-local" id="datePickerStart" name="startTime" value="">
                 <br>
-
-                <p> Received on:</p>
-                <input type="datetime-local" id="datePicker"
-                       name="meeting-time" value="">
-                <button class="bold" type="submit">Add achievement</button>
+                <p>End</p>
+                <input type="datetime-local" id="datePickerEnd" name="endTime" value="">
+                <button class="bold" type="submit">Add workout</button>
 
                 <input type="hidden" name="user_id" value="<?= $_SESSION['userid'] ?>">
             </form>

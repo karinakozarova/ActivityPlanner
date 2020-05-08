@@ -1,4 +1,5 @@
 <?php
+/* Workout Class */
 class Workout
 {
     public $userId;
@@ -8,16 +9,16 @@ class Workout
 
     public static function addWorkout($userId, $name, $startTime, $endTime)
     {
-        //require_once("../configurations/credentials.php");
-        //$conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
-        //$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        require("../configurations/credentials.php");
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $query = $conn-> prepare("INSERT INTO workouts(name, userID, startTime, endTime) VALUES (:name, :userid, :startTime, :endTime)");
         $query->bindValue(":name", $name);
         $query->bindValue(":userid", $userId);
         $query->bindValue(":startTime", $startTime);
         $query->bindValue(":endTime", $endTime);
         $query->execute();
-        //$conn = null;
+        $conn = null;
         header('Location: ../html/profile-dashboard.php?addedWorkout');
     }
 
@@ -25,9 +26,9 @@ class Workout
     {
         $workouts = [];
 
-        //require_once("../configurations/credentials.php");
-        //$conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
-        //$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        require("../configurations/credentials.php");
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $query = $conn->prepare("SELECT * FROM workouts WHERE userID=:userid");
         $query->bindValue(":userid", $userId);
         $query->execute();
@@ -43,7 +44,7 @@ class Workout
 
             array_push($workouts, $workout);
         }
-        //$conn = null;
+        $conn = null;
         return $workouts;
     }
 }
