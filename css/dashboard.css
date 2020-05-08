@@ -183,11 +183,15 @@
     position: relative;
     height: 250px;
     width: 90%;
+    position: relative;
+    height: 40vh;
+    width: 60vw
 }
 
 .chart-wrapper {
     display: block;
 }
+
 
 #tab-planner {
     margin: 0 2em 2em 0;
@@ -229,4 +233,21 @@
     width: 1.5em;
     display: block;
     margin: 0 auto;
+}
+
+#totalWater {
+    color: black;
+}
+
+.achievement-picture {
+    width: 100%;
+    height: 100%;
+}
+
+.left-margin {
+    margin-left: 55%;
+}
+
+.dodgerblue-text {
+    color: dodgerblue;
 }
