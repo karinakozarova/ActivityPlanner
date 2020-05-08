@@ -14,8 +14,15 @@
     <!-- Stylesheets imports -->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="../js/jquery-sked-tape/dist/jquery.skedTape.css" rel="stylesheet">
     <link href="../css/profile.css" rel="stylesheet">
     <link href="../css/dashboard.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.css" />
+
+    <!-- If you use the default popups, use this. -->
+    <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css" />
+    <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css" />
 
     <!-- Javascript imports -->
     <script src="../js/greetings.js"></script>
@@ -24,7 +31,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/radialIndicator/1.4.0/radialIndicator.min.js"></script>
+    <script src="../js/jquery-sked-tape/dist/jquery.skedTape.js"></script>
     <script src="../js/overviewControls.js"></script>
+
+    <script src="https://uicdn.toast.com/tui.code-snippet/latest/tui-code-snippet.js"></script>
+    <script src="https://uicdn.toast.com/tui.dom/v3.0.0/tui-dom.js"></script>
+    <script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.min.js"></script>
+    <script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.min.js"></script>
+    <script src="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.js"></script>
+    <!--<script src="../js/plannerControls.js"></script>-->
 
     <!-- Viewport Configuration -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,6 +50,7 @@ session_start();
 include '../configurations/db.php';
 include '../backend/login.php';
 include '../backend/achievements.php';
+include '../backend/workouts.php';
 
 $achievements = new Achievement();
 $achievementsCount = Achievement::getUserAchievementsCount($_SESSION['userid']);
@@ -275,7 +291,13 @@ $achievementsCount = Achievement::getUserAchievementsCount($_SESSION['userid']);
                 </div>
             </div>
             <div id="tab-planner" class="tab hidden">
-                Planner
+                <!--Planner here-->
+                <?php include("tab-planner.inc.php") ?>
+                <h2><a href="newWorkout.php" class="card"><button>New workout plan</button></a></h2>
+                <button id="calendar-prev-button" class="small-circular-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg></button>
+                <button id="calendar-next-button" class="small-circular-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg></button>
+                <!--<div id="scheduler"></div>-->
+                <div id="calendar"></div>
             </div>
             <div id="tab-achievements" class="tab hidden">
                 <?php include("tab-achivements.inc.php") ?>
