@@ -1,9 +1,12 @@
 <?php
 /*
- * This is the login page.
+ * This is the page where users can set a new password.
  * Everyone can access it.
+ * Requires a authentication token to work. (Generated from request password page)
  */
 session_start();
+
+if(isset($_SESSION["recentlyUpdatedPassword"]) && $_SESSION["recentlyUpdatedPassword"] == true) header("Location: ../index.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

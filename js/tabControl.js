@@ -1,3 +1,5 @@
+// Javascript script responsible for handling profile dashboard tab navigation
+
 const hidden_class = "hidden";
 const active_class = "active";
 

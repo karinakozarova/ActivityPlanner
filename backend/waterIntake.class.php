@@ -20,6 +20,28 @@ class WaterIntake
         return $query->fetch();
     }
 
+    public static function getWaterWeeklyIntake($userid, $startDate, $endDate)
+    {
+        $waterCupsCount = 0;
+
+        require("../configurations/credentials.php");
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $query = $conn->prepare("SELECT cups FROM water_intake WHERE date >= :startTime AND date <= :endTime AND user_id = :userID");
+        $query->bindValue(":startTime", $startDate);
+        $query->bindValue(":endTime", $endDate);
+        $query->bindValue(":userID", $userid);
+        $query->execute();
+        $elements = $query->fetchAll();
+
+        foreach ($elements as $element)
+        {
+            $waterCupsCount += $element['cups'];
+        }
+        $conn = null;
+        return $waterCupsCount;
+    }
+
     /**
      * @param int $userId
      * @param int $quantity
@@ -33,3 +55,4 @@ class WaterIntake
         $query->execute();
     }
 }
+?>

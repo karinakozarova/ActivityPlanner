@@ -74,7 +74,7 @@ if (isset($_POST["is_register"])) {
 
         $file_path = '../uploads/' . $avatar_path;
         $profilepic = '';
-        if (isset($avatar_path)) $profilepic = $file_path;
+        if (isset($avatar_path) && file_exists($file_path)) $profilepic = $file_path;
         else $profilepic = '../uploads/default-avatar.jpg';
 
     } catch (PDOException $e) {

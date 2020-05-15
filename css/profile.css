@@ -185,3 +185,29 @@ button {
     padding: 10px 32px;
     font-size: 16px;
 }
+
+.title-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.title-wrapper p {
+    margin: 0;
+    display: inline-block;
+    margin-left: 1em;
+    font-weight: bold;
+}
+
+.title-wrapper svg {
+    height: 30px;
+    width: 30px;
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.title-wrapper i {
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+}

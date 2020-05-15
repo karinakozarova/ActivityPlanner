@@ -6,4 +6,5 @@ $userId = $_SESSION['userid'];
 $date = date('Y-m-d');
 
 $element = WaterIntake::getWaterIntake($_SESSION['userid'], $date);
-$waterCups = $element['cups'] == NULL ? 0 : $element['cups'];
+if($element != null) $waterCups = $element['cups'] == NULL ? 0 : $element['cups'];
+else $waterCups = 0;

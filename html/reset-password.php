@@ -1,6 +1,6 @@
 <?php
 /*
- * This is the login page.
+ * This is the page where users can request a password change.
  * Everyone can access it.
  */
 session_start();

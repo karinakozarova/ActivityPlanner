@@ -3,12 +3,13 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+session_start();
+$_SESSION["recentlyUpdatedPassword"] = false;
+
 if (isset($_POST["reset-password-submit"])) {
     try {
         $selector = bin2hex(random_bytes(8));
         $auth_token = random_bytes(32);
-
-        //$url = "https://i426060.hera.fhict.nl/html/change-new-password.php?selector=" . $selector . "&validator=" . bin2hex($auth_token);
 
         $url = "https://".$_SERVER['HTTP_HOST']."/html/change-new-password.php?selector=" . $selector . "&validator=" . bin2hex($auth_token);
 
@@ -22,6 +23,8 @@ if (isset($_POST["reset-password-submit"])) {
         $statement->bindValue(":email", $userEmail);
         $statement->execute();
 
+        // Generating authentication token
+
         $hashedToken = password_hash($auth_token, PASSWORD_DEFAULT);
         $statement = $conn->prepare("INSERT INTO pwdtokens (pwdResetEmail, pwdResetSelector, pwdResetToken, pwdExpiryDate) VALUES (:email, :selector, :token, :expiry)");
         $statement->bindValue(":email", $userEmail);
@@ -32,7 +35,8 @@ if (isset($_POST["reset-password-submit"])) {
 
         $conn = null;
 
-        //Sending the e-mail to the user
+        // Sending the e-mail to the user
+
         //ini_set('SMTP', 'mailrelay.fhict.local');
 
         $emailSubject = "Reset your MK3Planner password";
@@ -80,8 +84,8 @@ if (isset($_POST["reset-password-submit"])) {
         header("Location: ../html/reset-password.php?reset=success");
     } catch (Exception $e) {
         $conn = null;
-        session_unset();    // remove all session variables
-        session_destroy();    // destroy the session
+        session_unset();      // Removing all session variables
+        session_destroy();    // Destroying the session
 
         var_dump("Error: " . $e);
         die;

@@ -47,5 +47,22 @@ class Workout
         $conn = null;
         return $workouts;
     }
+
+    public static function getWorkoutsCount($startDate, $endDate)
+    {
+        $workoutsCount = 0;
+
+        require("../configurations/credentials.php");
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $query = $conn->prepare("SELECT * FROM workouts WHERE startTime >= :startTime AND endTime <= :endTime");
+        $query->bindValue(":startTime", $startDate);
+        $query->bindValue(":endTime", $endDate);
+        $query->execute();
+        $workoutsCount = $query->rowCount();
+
+        $conn = null;
+        return $workoutsCount;
+    }
 }
 ?>

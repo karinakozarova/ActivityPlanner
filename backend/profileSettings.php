@@ -8,13 +8,14 @@ else {
         $_SESSION["lastname"] = $_POST["lastname"];
         $_SESSION["email"] = $_POST["email"];
 
-        $sql = "UPDATE accounts SET firstname=:firstname, lastname=:lastname, email=:email WHERE user_id=:userid";
-        $statement = $conn->prepare($sql);
+        $statement = $conn->prepare("UPDATE accounts SET firstname=:firstname, lastname=:lastname, email=:email WHERE user_id=:userid");
         $statement->bindValue(":firstname", $_SESSION["firstname"]);
         $statement->bindValue(":lastname", $_SESSION["lastname"]);
         $statement->bindValue(":email", $_SESSION["email"]);
         $statement->bindValue(":userid", $_SESSION["userid"]);
         $count = $statement->execute();
+
+        // Updating profile picture if changed by user
 
         if (isset($_FILES['profilepic'])) {
             try {
@@ -27,15 +28,19 @@ else {
                 $fileExt = explode('.', $fileName);
                 $fileActualExt = strtolower(end($fileExt));
 
+                // File size -> 512kb
+
                 if ($fileError === 0 && $fileSize < 512000) {
                     $fileNewName = $_SESSION["userid"] . "." . $fileActualExt;
+
+                    // Saving image to local storage
 
                     $fileDestination = "../uploads/" . $fileNewName;
                     move_uploaded_file($fileTmpName, $fileDestination);
 
                     try {
-                        $sql = "UPDATE accounts SET avatar_path=:filepath WHERE user_id=:userid";
-                        $statement = $conn->prepare($sql);
+                        // Creating image path reference and saving it to database
+                        $statement = $conn->prepare("UPDATE accounts SET avatar_path=:filepath WHERE user_id=:userid");
                         $statement->bindValue(":filepath", $fileNewName);
                         $statement->bindValue(":userid", $_SESSION["userid"]);
                         $count = $statement->execute();
@@ -46,8 +51,8 @@ else {
                 }
             } catch (Exception $e) {
                 $conn = null;
-                session_unset();    // remove all session variables
-                session_destroy();    // destroy the session
+                session_unset();      // Removing all session variables
+                session_destroy();    // Destroying session
 
                 var_dump("Error: " . $e);
                 die;
@@ -58,8 +63,8 @@ else {
         header('Location: ../html/profile-dashboard.php');
     } catch (Exception $e) {
         $conn = null;
-        session_unset();    // remove all session variables
-        session_destroy();    // destroy the session
+        session_unset();      // Removing all session variables
+        session_destroy();    // Destroying the session
 
         var_dump("Error: " . $e);
         die;

@@ -60,6 +60,7 @@ session_start();
             if ($_GET["password"] == "updated") { ?>
                 <div class="success-message"> Successfully changed password.</div>
                 <?php
+                $_SESSION["recentlyUpdatedPassword"] = true;
             }
         }
         ?>

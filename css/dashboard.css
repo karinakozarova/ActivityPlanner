@@ -35,12 +35,14 @@
 }
 
 /* Clear floats after the columns */
+
 .row:after {
     display: table;
     clear: both;
 }
 
 /* Responsive columns */
+
 @media screen and (max-width: 600px) {
     .column {
         width: 100%;
@@ -68,6 +70,7 @@
 }
 
 /* Overview Tab */
+
 #tab-overview {
     margin: 0 2em 2em 0;
 }
@@ -83,6 +86,8 @@
     color: #c20e0e;
     font-weight: bold;
 }
+
+/* Overview Progress bars Styling */
 
 .progressbar-container {
     display: flex;
@@ -115,7 +120,7 @@
     -o-transition: width .5s ease-in-out;
 }
 
-.progressbar-container, #calories-progressbar, #exercises-progressbar, #steps-progressbar, #distance-progressbar {
+.progressbar-container, #calories-progressbar, #exercises-progressbar, #water-progressbar {
     position: relative;
 }
 
@@ -129,19 +134,16 @@
 }
 
 #calories-progressbar-icon {
-    fill: #ff5733;
+    fill: #f25635;
 }
 
 #exercises-progressbar-icon {
-    fill: #0779e4;
+
+    fill: #5c2e4d;
 }
 
-#steps-progressbar-icon {
-    fill: #5b8c5a;
-}
-
-#distance-progressbar-icon {
-    fill: #552244;
+#water-progressbar-icon {
+    fill: #4b93d6;
 }
 
 .progressbar-wrapper > h4 {
@@ -225,6 +227,14 @@
     text-align: center;
 }
 
+.small-circular-button:active {
+    background-color: #e6e6e6;
+}
+
+.small-circular-button:focus {
+    outline: none;
+}
+
 .small-circular-button:hover {
     border-color: #ababab;
 }
@@ -250,4 +260,11 @@
 
 .dodgerblue-text {
     color: dodgerblue;
+}
+
+#downloadAchievementsBttn {
+    width: 2em;
+    height: 2em;
+    margin: 0 1em 0 1em;
+    color: #000000;
 }

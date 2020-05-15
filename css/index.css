@@ -1,4 +1,6 @@
-/* Index.html Base Styling */
+/* Index.php Base Styling */
+
+/* Setting website color scheme */
 
 :root {
     --main-color: #c20e0e;
@@ -63,6 +65,8 @@ header {
     text-align: center;
 }
 
+/* Navigation tab */
+
 nav {
     margin-top: 0;
     margin-bottom: 1em;
@@ -91,6 +95,8 @@ nav li a:hover {
     color: var(--main-color);
     text-decoration: none;
 }
+
+/* Button styles */
 
 .square-button {
     display: inline-block;
@@ -129,6 +135,74 @@ nav li a:hover {
     border-color: hsl(0, 87%, 30%);
 }
 
+.scroll-button {
+    display: block;
+    margin-top: auto;
+    color: var(--offset-color);
+    left: 50%;
+    transition: opacity .3s;
+    opacity: .5;
+}
+
+.scroll-button a {
+    text-decoration: none;
+}
+
+.scroll-button:hover {
+    opacity: .25;
+}
+
+.scroll-button p {
+    display: block;
+    color: var(--offset-color);
+    left: 50%;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+
+.scroll-button svg {
+    display: inline-block;
+    justify-content: center;
+    transform: rotate(90deg) scale(1);
+    fill: var(--offset-color);
+    width: 2.5em;
+    height: 2.5em;
+
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+}
+
+.scroll-button:hover svg {
+    animation: pulse 2s;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.25);
+        -moz-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.25);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+        -moz-box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        -moz-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.25);
+    }
+    70% {
+        -webkit-box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
 #get-started {
     display: block;
     text-align: center;
@@ -137,6 +211,8 @@ nav li a:hover {
     -moz-transition: font-size .5s ease-in-out;
     -o-transition: font-size .5s ease-in-out;
 }
+
+/* About section */
 
 #about {
     display: block;
@@ -214,73 +290,7 @@ nav li a:hover {
     transform: scale(1.1);
 }
 
-.scroll-button {
-    display: block;
-    margin-top: auto;
-    color: var(--offset-color);
-    left: 50%;
-    transition: opacity .3s;
-    opacity: .5;
-}
-
-.scroll-button a {
-    text-decoration: none;
-}
-
-.scroll-button:hover {
-    opacity: .25;
-}
-
-.scroll-button p {
-    display: block;
-    color: var(--offset-color);
-    left: 50%;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-}
-
-.scroll-button svg {
-    display: inline-block;
-    justify-content: center;
-    transform: rotate(90deg) scale(1);
-    fill: var(--offset-color);
-    width: 2.5em;
-    height: 2.5em;
-
-    border-radius: 50%;
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
-}
-
-.scroll-button:hover svg {
-    animation: pulse 2s;
-}
-
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.25);
-        -moz-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.25);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-        -moz-box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-        -moz-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-    }
-}
-
-@-webkit-keyframes pulse {
-    0% {
-        -webkit-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.25);
-    }
-    70% {
-        -webkit-box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-    }
-    100% {
-        -webkit-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-    }
-}
+/* Features section */
 
 .features-wrapper {
     display: flex;
@@ -320,6 +330,12 @@ nav li a:hover {
     width: 4em;
 }
 
+.center-text {
+    text-align: center;
+}
+
+/* Footer */
+
 footer {
     color: var(--offset-color);
     background-color: var(--background-color);
@@ -328,9 +344,5 @@ footer {
 
 #trademark {
     width: 100%;
-    text-align: center;
-}
-
-.center-text {
     text-align: center;
 }

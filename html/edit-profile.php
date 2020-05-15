@@ -1,7 +1,7 @@
 <?php
 /*
  * This is the edit profile page
- * If a user cant be logged in, it redirects to the index page.
+ * If a user is not logged in, it redirects them back to the index page.
  */
 ?>
 <!DOCTYPE html>
@@ -48,7 +48,9 @@ try {
     $_SESSION["userid"] = $user_id;
     $_SESSION["avatar"] = $row["avatar_path"];
 
-    if (isset($_SESSION["avatar"])) $profilepic = "../uploads/" . $_SESSION["avatar"];
+    $file_path = '../uploads/' . $_SESSION["avatar"];
+
+    if (isset($_SESSION["avatar"]) && file_exists($file_path)) $profilepic = "../uploads/" . $_SESSION["avatar"];
     else $profilepic = '../uploads/default-avatar.jpg';
 } catch (PDOException $e) {
     session_unset();    // remove all session variables

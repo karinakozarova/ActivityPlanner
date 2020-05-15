@@ -34,6 +34,8 @@ if (isset($_POST["reset-password-submit"])) {
         $tokenBin = hex2bin($validator);
         $tokenCheck = password_verify($tokenBin, $row["pwdResetToken"]);
 
+        // Validating authentication token
+
         if ($tokenCheck === false) {
             echo "Please resubmit your reset request.";
             $conn = null;
@@ -54,10 +56,14 @@ if (isset($_POST["reset-password-submit"])) {
 
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
+            // Updating the database with the newly-set hashed password
+
             $update_query = $conn->prepare("UPDATE users SET password=:newpass WHERE id=:userid");
             $update_query->bindValue(":newpass", $hashed_password);
             $update_query->bindValue(":userid", $user_id);
             $update_query->execute();
+
+            // Deleting verification token from the database
 
             $delToken_query = $conn->prepare("DELETE FROM pwdtokens WHERE pwdResetEmail=:email");
             $delToken_query->bindValue(":email", $tokenEmail);
@@ -68,8 +74,8 @@ if (isset($_POST["reset-password-submit"])) {
         $conn = null;
     } catch (Exception $e) {
         $conn = null;
-        session_unset();    // remove all session variables
-        session_destroy();    // destroy the session
+        session_unset();        // Removing all session variables
+        session_destroy();      // Destroying session
 
         var_dump("Error: " . $e);
         die;
