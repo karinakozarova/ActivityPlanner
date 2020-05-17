@@ -1,5 +1,5 @@
 <?php
-// The following should be added in the credentials.php folder
+// The following should be added in the credentials.php file
 $servername = "YOUR SERVERNAME HERE";
 $dbusername = "YOUR DATABASE CREDENTIALS USERNAME HERE";
 $dbpassword = "THE PASSWORD FOR YOUR DATABASE HERE";
